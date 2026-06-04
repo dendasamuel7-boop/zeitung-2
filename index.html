@@ -59,11 +59,22 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 #nav .nav-title:hover{background:#f0ece2}
 #nav .nav-title-input{font-family:var(--font-heading);font-size:16px;font-weight:700;border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;background:#fff;outline:none;width:200px}
 
+/* ─── AUTH FORM ─── */
+.auth-container{max-width:400px;margin:80px auto;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+.auth-container h2{font-size:26px;margin-bottom:8px;text-align:center}
+.auth-container p{color:var(--muted);font-size:14px;text-align:center;margin-bottom:24px}
+.auth-container .field{margin-bottom:16px}
+.auth-container .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+.auth-container .field input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);outline:none;font-size:14px}
+.auth-container .field input:focus{border-color:var(--fg)}
+.auth-footer-links{display:flex;justify-content:space-between;margin-top:16px;font-size:13px}
+.auth-footer-links a{color:var(--accent);text-decoration:none;cursor:pointer}
+.auth-footer-links a:hover{text-decoration:underline}
+
 /* ─── MAIN ─── */
 .page{max-width:1100px;margin:0 auto;padding:40px 24px}
 
 /* ─── DASHBOARD ─── */
-#page-dashboard{}
 .dash-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px}
 .dash-header h2{font-size:32px;font-weight:900}
 .dash-header p{color:var(--muted);margin-top:4px;font-size:14px}
@@ -83,52 +94,21 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 .empty-state .empty-icon{width:64px;height:64px;background:#f0ece2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
 .empty-state h3{font-size:20px;margin-bottom:8px}
 .empty-state p{color:var(--muted);margin-bottom:24px;font-size:14px}
-.loading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.skeleton{background:#f0ece2;border-radius:var(--radius-lg);height:220px;animation:pulse 1.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
 
 /* ─── EDITOR PAGE ─── */
 #page-editor .editor-layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
 @media(max-width:800px){#page-editor .editor-layout{grid-template-columns:1fr}}
-.editor-sidebar{}
 .sidebar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .sidebar-header h3{font-size:15px;font-weight:600}
-.article-list{display:flex;flex-direction:column;gap:10px}
 .article-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s}
 .article-item:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .article-thumb{width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#f0ece2;display:flex;align-items:center;justify-content:center;color:var(--muted)}
-.article-thumb img{width:56px;height:56px;border-radius:8px;object-fit:cover}
-.article-info{flex:1;min-width:0}
-.article-info h4{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
-.article-info p{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}
-.article-info .badges{display:flex;gap:4px;flex-wrap:wrap}
-.article-actions{display:flex;gap:4px;flex-shrink:0}
-.article-actions button{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:none;background:transparent;cursor:pointer;color:var(--muted);transition:all 0.15s}
-.article-actions button:hover{background:#f0ece2;color:var(--fg)}
-.article-actions .del-btn:hover{background:#fde8e6;color:var(--danger)}
 
 /* ─── NEWSPAPER CANVAS ─── */
 .newspaper-canvas{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;min-height:500px}
 .np-header-area{text-align:center;border-bottom:4px double var(--fg);padding-bottom:24px;margin-bottom:32px}
 .np-header-area .np-edition-date{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .np-header-area h1{font-family:var(--font-heading);font-size:clamp(32px,6vw,64px);font-weight:900;line-height:1;letter-spacing:-1px}
-.np-header-area .np-subtitle{color:var(--muted);font-style:italic;margin-top:10px;font-size:15px}
-.np-header-area .np-rule{border:none;border-top:1px solid var(--border);margin-top:16px}
-.canvas-articles{display:flex;flex-direction:column;gap:32px}
-.canvas-article-block{position:relative;padding:16px;border-radius:var(--radius);cursor:pointer;transition:background 0.15s}
-.canvas-article-block:hover{background:#faf8f4}
-.canvas-article-block .block-actions{position:absolute;top:12px;right:12px;display:none;gap:6px;z-index:10}
-.canvas-article-block:hover .block-actions{display:flex}
-.canvas-article-block .cat-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.canvas-article-block h2{font-family:var(--font-heading);font-weight:900;line-height:1.15;margin-bottom:8px}
-.canvas-article-block .art-subtitle{color:var(--muted);font-style:italic;margin-bottom:10px;font-size:14px}
-.canvas-article-block .art-author{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
-.canvas-article-block img{width:100%;object-fit:cover;border-radius:4px;margin-bottom:8px}
-.canvas-article-block .art-body{font-family:var(--font-serif);font-size:14px;line-height:1.8;color:#333;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.canvas-article-block hr{border:none;border-top:1px solid var(--border);margin:32px 0 0}
-.half-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.third-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.add-article-row{display:flex;justify-content:center;padding-top:8px}
 
 /* ─── MODAL ─── */
 .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px)}
@@ -136,108 +116,15 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 .modal h3{font-size:20px;font-weight:700;margin-bottom:20px}
 .modal .field{margin-bottom:16px}
 .modal .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--fg)}
-.modal .field input,.modal .field select{width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:var(--radius);font-size:14px;outline:none;transition:border-color 0.15s;background:#fff}
-.modal .field input:focus,.modal .field select:focus{border-color:#888}
+.modal .field input,.modal .field select{width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:var(--radius);font-size:14px;outline:none;background:#fff}
 .modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:24px}
-.share-url-box{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f0ece2;border-radius:var(--radius);border:1px solid var(--border)}
-.share-url-box input{flex:1;background:transparent;border:none;outline:none;font-size:13px;color:var(--fg)}
-
-/* ══════════════════════════════════════════
-   ARTICLE EDITOR — WORD-STYLE (KEY CHANGE)
-   ══════════════════════════════════════════ */
-#page-article-editor{min-height:100vh;background:var(--bg)}
-.ae-topbar{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 24px}
-.ae-topbar-inner{max-width:860px;margin:0 auto;height:56px;display:flex;align-items:center;gap:12px}
-.ae-topbar .spacer{flex:1}
-.ae-topbar .upload-status{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
-
-/* Word-style toolbar — no black borders, no arrows, clean pill tabs */
-.ae-word-toolbar{background:#f5f2ea;padding:8px 12px;display:flex;align-items:center;gap:2px;flex-wrap:wrap;border-bottom:1px solid #e8e4da;position:sticky;top:56px;z-index:90}
-.ae-word-toolbar .toolbar-sep{width:1px;height:22px;background:#d0ccc0;margin:0 6px}
-.ae-tb-btn{width:32px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;border:none;background:transparent;cursor:pointer;color:#555;font-size:13px;font-weight:600;transition:all 0.12s;font-family:var(--font-body)}
-.ae-tb-btn:hover{background:rgba(0,0,0,0.08);color:#111}
-.ae-tb-btn.active{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.12);color:#111}
-.ae-tb-btn svg{pointer-events:none}
-.ae-tb-dropdown{display:flex;align-items:center;gap:4px;padding:0 8px;height:28px;border-radius:5px;background:transparent;border:none;cursor:pointer;font-size:12px;font-weight:500;color:#555;font-family:var(--font-body);transition:all 0.12s}
-.ae-tb-dropdown:hover{background:rgba(0,0,0,0.08);color:#111}
-.ae-tb-select{height:28px;border:none;background:transparent;font-size:12px;color:#555;font-family:var(--font-body);cursor:pointer;outline:none;border-radius:5px;padding:0 6px;transition:all 0.12s}
-.ae-tb-select:hover{background:rgba(0,0,0,0.08)}
-.ae-tb-select:focus{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
-
-/* The document area — clean white page like Word */
-.ae-document-area{max-width:860px;margin:0 auto;padding:24px 24px 60px}
-.ae-document-page{background:#fff;border-radius:3px;box-shadow:0 1px 8px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);padding:56px 72px;min-height:500px}
-@media(max-width:700px){.ae-document-page{padding:32px 24px}}
-
-/* Meta fields — clean, no visible box borders */
-.ae-meta-section{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #eeebe3}
-@media(max-width:600px){.ae-meta-section{grid-template-columns:1fr}}
-.ae-meta-field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
-.ae-meta-input{width:100%;border:none;border-bottom:1.5px solid #e8e4da;border-radius:0;padding:4px 0 6px;font-size:14px;font-family:var(--font-body);color:var(--fg);background:transparent;outline:none;transition:border-color 0.15s}
-.ae-meta-input:focus{border-bottom-color:#888}
-.ae-meta-input::placeholder{color:#bbb}
-.ae-meta-select{width:100%;border:none;border-bottom:1.5px solid #e8e4da;border-radius:0;padding:4px 0 6px;font-size:14px;font-family:var(--font-body);color:var(--fg);background:transparent;outline:none;cursor:pointer;-webkit-appearance:none;transition:border-color 0.15s}
-.ae-meta-select:focus{border-bottom-color:#888}
-
-/* Headline input — big, editorial */
-.ae-headline-input{width:100%;border:none;background:transparent;outline:none;font-family:var(--font-heading);font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;color:var(--fg);margin-bottom:10px;resize:none;overflow:hidden}
-.ae-headline-input::placeholder{color:#ccc}
-
-/* Subtitle input */
-.ae-subtitle-input{width:100%;border:none;background:transparent;outline:none;font-family:var(--font-heading);font-size:18px;font-weight:400;font-style:italic;color:#666;margin-bottom:28px;border-bottom:1px solid #eeebe3;padding-bottom:16px;resize:none;overflow:hidden}
-.ae-subtitle-input::placeholder{color:#ddd}
-
-/* Image zone */
-.ae-image-zone{margin-bottom:28px}
-.ae-image-preview{position:relative;border-radius:var(--radius);overflow:hidden}
-.ae-image-preview img{width:100%;max-height:340px;object-fit:cover;display:block}
-.ae-image-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);opacity:0;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;gap:10px}
-.ae-image-preview:hover .ae-image-overlay{opacity:1}
-.ae-image-caption{width:100%;border:none;background:transparent;outline:none;font-size:12px;font-style:italic;color:var(--muted);padding:8px 0 4px;border-bottom:1px solid #eeebe3;margin-top:6px}
-.ae-image-caption::placeholder{color:#ccc}
-.ae-image-upload-btn{width:100%;height:120px;border:1.5px dashed #d0ccc0;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#aaa;background:transparent;cursor:pointer;transition:all 0.15s}
-.ae-image-upload-btn:hover{border-color:#aaa;color:#777;background:#fafaf7}
-
-/* The rich text content area — no borders at all, pure white writing */
-.ae-content-area{min-height:280px;font-family:var(--font-serif);font-size:16px;line-height:1.9;color:#222;outline:none;word-break:break-word}
-.ae-content-area:empty::before{content:attr(data-placeholder);color:#ccc;pointer-events:none;font-style:italic}
-.ae-content-area p{margin-bottom:0.85em}
-.ae-content-area h1{font-family:var(--font-heading);font-size:26px;font-weight:800;margin:1.2em 0 0.4em;line-height:1.2}
-.ae-content-area h2{font-family:var(--font-heading);font-size:21px;font-weight:700;margin:1.1em 0 0.35em;line-height:1.25}
-.ae-content-area h3{font-family:var(--font-heading);font-size:17px;font-weight:700;margin:1em 0 0.3em}
-.ae-content-area blockquote{border-left:3px solid #c8b890;margin:1.4em 0;padding:6px 20px;font-style:italic;color:#555;background:#fdfaf4}
-.ae-content-area strong{font-weight:700}
-.ae-content-area em{font-style:italic}
-.ae-content-area ul,.ae-content-area ol{padding-left:24px;margin-bottom:0.85em}
-.ae-content-area li{margin-bottom:4px}
-.ae-content-area img{max-width:100%;border-radius:6px;margin:12px 0;display:block}
-.ae-content-area a{color:var(--accent);text-decoration:underline}
-.ae-tip{text-align:center;font-size:12px;color:#aaa;padding:16px 0 0;font-style:italic}
-.ae-word-count{font-size:11px;color:#bbb;text-align:right;padding:8px 0;border-top:1px solid #eeebe3;margin-top:16px}
-
-/* ─── PUBLIC VIEW ─── */
-#page-public .pv-header{border-bottom:4px double var(--fg);padding:32px 0 24px;margin-bottom:40px;text-align:center}
-#page-public .pv-date{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-#page-public .pv-title{font-family:var(--font-heading);font-size:clamp(36px,8vw,72px);font-weight:900;line-height:1;letter-spacing:-1px}
-#page-public .pv-subtitle{color:var(--muted);font-style:italic;margin-top:12px;font-size:16px}
-#page-public .pv-rule{border:none;border-top:1px solid var(--border);margin-top:16px}
-#page-public .pub-article{margin-bottom:40px}
-#page-public .pub-article .cat-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-#page-public .pub-article h2{font-family:var(--font-heading);font-weight:900;line-height:1.15;margin-bottom:10px}
-#page-public .pub-article .art-sub{font-style:italic;color:var(--muted);margin-bottom:12px}
-#page-public .pub-article .art-auth{font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:14px}
-#page-public .pub-article img.art-img{width:100%;object-fit:cover;border-radius:4px;margin-bottom:10px}
-#page-public .pub-article .art-caption{font-size:12px;font-style:italic;color:var(--muted);margin-bottom:12px}
-#page-public .pub-article .art-content{font-family:var(--font-serif);font-size:16px;line-height:1.85}
-#page-public .art-sep{border:none;border-top:1px solid var(--border);margin:40px 0 0}
 
 /* ─── TOAST ─── */
 #toast-container{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--fg);color:#fff;padding:10px 18px;border-radius:var(--radius);font-size:13px;animation:slideUp 0.25s ease;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.toast{background:var(--fg);color:#fff;padding:10px 18px;border-radius:var(--radius);font-size:13px;animation:slideUp 0.25s ease;}
 .toast.error{background:var(--danger)}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* ─── ICONS SVG helpers ─── */
 svg.icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 svg.icon-sm{width:14px;height:14px}
 svg.icon-lg{width:20px;height:20px}
@@ -248,35 +135,21 @@ svg.icon-lg{width:20px;height:20px}
 <div id="toast-container"></div>
 
 <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
-<header id="nav">
+<header id="nav" class="hidden">
   <div class="nav-inner">
     <div class="logo" id="logo-btn" style="cursor:pointer">
       <div class="logo-icon">
         <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8M4 18h6"/></svg>
       </div>
-      <span id="nav-logo-text">Presse Editor</span>
+      <span id="nav-logo-text">Zeitung</span>
     </div>
     <div class="spacer"></div>
-    <div id="nav-editor-controls" class="hidden" style="display:none;align-items:center;gap:8px">
+    <div id="nav-editor-controls" style="display:none;align-items:center;gap:8px">
       <span id="nav-title-display" class="nav-title"></span>
       <div id="nav-title-edit" class="hidden"><input class="nav-title-input" id="nav-title-input" /></div>
-      <div class="spacer" style="min-width:16px"></div>
-      <button class="btn btn-outline btn-sm hidden" id="btn-share">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
-        Teilen
-      </button>
-      <button class="btn btn-outline btn-sm hidden" id="btn-preview">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        Ansehen
-      </button>
-      <button class="btn btn-primary btn-sm" id="btn-publish">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 117-7m-7 7v-7M17 8l-5-5-5 5M12 3v10"/></svg>
-        <span id="publish-label">Veröffentlichen</span>
-      </button>
-      <button class="btn btn-primary btn-sm" id="btn-new-article">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-        Artikel
-      </button>
+      <button class="btn btn-outline btn-sm" id="btn-share">Teilen</button>
+      <button class="btn btn-outline btn-sm" id="btn-preview">Ansehen</button>
+      <button class="btn btn-primary btn-sm" id="btn-publish">Veröffentlichen</button>
     </div>
     <button class="btn btn-ghost btn-sm" id="btn-logout" style="color:var(--muted)">
       <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
@@ -285,8 +158,61 @@ svg.icon-lg{width:20px;height:20px}
   </div>
 </header>
 
-<!-- ═══════════════════════════════ PAGES ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ AUTH PAGES ═══════════════════════════════ -->
+<!-- LOGIN -->
+<div id="auth-login" class="auth-container fade-in">
+  <h2>Anmelden bei Zeitung</h2>
+  <p>Geben Sie Ihre Daten ein, um fortzufahren</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="login-email" placeholder="name@beispiel.de">
+  </div>
+  <div class="field">
+    <label>Passwort</label>
+    <input type="password" id="login-pass" placeholder="••••••••">
+  </div>
+  <button class="btn btn-primary" id="submit-login" style="width:100%; justify-content:center; margin-top:8px;">Einloggen</button>
+  <div class="auth-footer-links">
+    <a id="go-to-forgot">Password vergessen?</a>
+    <a id="go-to-register">Registrieren</a>
+  </div>
+</div>
 
+<!-- REGISTER -->
+<div id="auth-register" class="auth-container fade-in hidden">
+  <h2>Konto erstellen</h2>
+  <p>Erstellen Sie ein Konto für Zeitung</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="reg-email" placeholder="name@beispiel.de">
+  </div>
+  <div class="field">
+    <label>Passwort erstellen</label>
+    <input type="password" id="reg-pass" placeholder="••••••••">
+  </div>
+  <button class="btn btn-primary" id="submit-register" style="width:100%; justify-content:center; margin-top:8px;">Konto erstellen</button>
+  <div class="auth-footer-links">
+    <span></span>
+    <a id="back-to-login-reg">Zurück zum Login</a>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="auth-forgot" class="auth-container fade-in hidden">
+  <h2>Passwort vergessen</h2>
+  <p>Wir senden Ihnen Anweisungen zum Zurücksetzen</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="forgot-email" placeholder="name@beispiel.de">
+  </div>
+  <button class="btn btn-primary" id="submit-forgot" style="width:100%; justify-content:center; margin-top:8px;">Zurücksetzen</button>
+  <div class="auth-footer-links">
+    <span></span>
+    <a id="back-to-login-forgot">Zurück zum Login</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGES ═══════════════════════════════ -->
 <!-- DASHBOARD -->
 <main id="page-dashboard" class="page hidden">
   <div class="dash-header">
@@ -294,748 +220,106 @@ svg.icon-lg{width:20px;height:20px}
       <h2>Meine Zeitungen</h2>
       <p>Erstelle und verwalte deine Zeitungsausgaben</p>
     </div>
-    <button class="btn btn-primary" id="btn-create-newspaper">
-      <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-      Neue Ausgabe
-    </button>
+    <button class="btn btn-primary" id="btn-create-newspaper">Neue Ausgabe</button>
   </div>
-  <div id="newspaper-list"></div>
-</main>
-
-<!-- EDITOR -->
-<main id="page-editor" class="page hidden">
-  <div class="editor-layout">
-    <aside class="editor-sidebar">
-      <div class="sidebar-header">
-        <h3>Artikel</h3>
-        <button class="btn btn-outline btn-sm" id="sidebar-new-article">
-          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          Neu
-        </button>
-      </div>
-      <div id="article-list"></div>
-    </aside>
-    <div id="newspaper-canvas"></div>
+  <div class="empty-state">
+    <div class="empty-icon">📰</div>
+    <h3>Keine Zeitungen</h3>
+    <p>Erstellen Sie Ihre erste Zeitungsausgabe, um zu beginnen.</p>
   </div>
 </main>
-
-<!-- ARTICLE EDITOR (Word-style) -->
-<div id="page-article-editor" class="hidden">
-  <div class="ae-topbar">
-    <div class="ae-topbar-inner">
-      <button class="btn btn-ghost" id="ae-close">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        Schließen
-      </button>
-      <div class="spacer"></div>
-      <div class="ae-upload-status hidden" id="ae-upload-status">
-        <svg class="icon icon-sm spin" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        Hochladen…
-      </div>
-      <button class="btn btn-primary" id="ae-save" style="border-radius:20px;padding:7px 20px">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-        <span id="ae-save-label">Speichern</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Word-style formatting toolbar -->
-  <div class="ae-word-toolbar" id="ae-toolbar">
-    <select class="ae-tb-select" id="tb-format" title="Format">
-      <option value="p">Absatz</option>
-      <option value="h1">Überschrift 1</option>
-      <option value="h2">Überschrift 2</option>
-      <option value="h3">Überschrift 3</option>
-    </select>
-    <div class="toolbar-sep"></div>
-    <button class="ae-tb-btn" data-cmd="bold" title="Fett (Ctrl+B)"><b>B</b></button>
-    <button class="ae-tb-btn" data-cmd="italic" title="Kursiv (Ctrl+I)"><i>I</i></button>
-    <button class="ae-tb-btn" data-cmd="underline" title="Unterstrichen (Ctrl+U)" style="text-decoration:underline">U</button>
-    <div class="toolbar-sep"></div>
-    <button class="ae-tb-btn" data-cmd="insertUnorderedList" title="Aufzählung">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
-    </button>
-    <button class="ae-tb-btn" data-cmd="insertOrderedList" title="Nummerierte Liste">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
-    </button>
-    <button class="ae-tb-btn" id="tb-blockquote" title="Zitat">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-    </button>
-    <div class="toolbar-sep"></div>
-    <button class="ae-tb-btn" id="tb-image" title="Bild einfügen">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    </button>
-    <button class="ae-tb-btn" id="tb-link" title="Link einfügen">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-    </button>
-    <div class="toolbar-sep"></div>
-    <button class="ae-tb-btn" data-cmd="removeFormat" title="Formatierung entfernen">
-      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16M5 20l14-16"/></svg>
-    </button>
-  </div>
-
-  <!-- Document page -->
-  <div class="ae-document-area">
-    <div class="ae-document-page">
-      <!-- Meta fields row -->
-      <div class="ae-meta-section">
-        <div class="ae-meta-field">
-          <label>Autor</label>
-          <input class="ae-meta-input" id="ae-author" placeholder="Autorenname" />
-        </div>
-        <div class="ae-meta-field">
-          <label>Kategorie</label>
-          <select class="ae-meta-select" id="ae-category">
-            <option value="nachrichten">Nachrichten</option>
-            <option value="politik">Politik</option>
-            <option value="wirtschaft">Wirtschaft</option>
-            <option value="sport">Sport</option>
-            <option value="kultur">Kultur</option>
-            <option value="wissenschaft">Wissenschaft</option>
-            <option value="meinung">Meinung</option>
-            <option value="unterhaltung">Unterhaltung</option>
-          </select>
-        </div>
-        <div class="ae-meta-field">
-          <label>Layout-Größe</label>
-          <select class="ae-meta-select" id="ae-size">
-            <option value="full">Volle Breite</option>
-            <option value="half">Halbe Breite</option>
-            <option value="third">Drittel</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Headline -->
-      <textarea class="ae-headline-input" id="ae-headline" placeholder="Überschrift eingeben…" rows="1"></textarea>
-
-      <!-- Subtitle -->
-      <textarea class="ae-subtitle-input" id="ae-subtitle" placeholder="Untertitel (optional)…" rows="1"></textarea>
-
-      <!-- Image zone -->
-      <div class="ae-image-zone" id="ae-image-zone">
-        <div class="ae-image-preview hidden" id="ae-image-preview">
-          <img id="ae-image-el" src="" alt="" />
-          <div class="ae-image-overlay">
-            <button class="btn btn-outline btn-sm" style="background:rgba(255,255,255,0.9)" id="ae-image-change">Ändern</button>
-            <button class="btn btn-sm" style="background:rgba(200,50,50,0.85);color:#fff" id="ae-image-remove">Entfernen</button>
-          </div>
-          <input class="ae-image-caption" id="ae-image-caption" placeholder="Bildunterschrift…" />
-        </div>
-        <button class="ae-image-upload-btn hidden" id="ae-image-upload-btn">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span style="font-size:13px">Bild hochladen</span>
-        </button>
-      </div>
-      <input type="file" id="ae-file-input" accept="image/*" style="display:none" />
-
-      <!-- Content area — no Quill, pure contenteditable for clean look -->
-      <div class="ae-content-area" id="ae-content" contenteditable="true" data-placeholder="Schreibe deinen Artikel hier…"></div>
-
-      <p class="ae-tip">💡 Tipp: Nutze die Toolbar oben zum Formatieren. Mit dem 🖼-Button kannst du Bilder einfügen.</p>
-      <div class="ae-word-count"><span id="ae-word-count">0 Wörter</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- PUBLIC VIEW -->
-<main id="page-public" class="page hidden">
-  <div id="public-content"></div>
-</main>
-
-<!-- MODAL: Create Newspaper -->
-<div class="modal-overlay hidden" id="modal-create-np">
-  <div class="modal fade-in">
-    <h3>Neue Zeitungsausgabe</h3>
-    <div class="field">
-      <label>Titel der Zeitung</label>
-      <input id="create-np-title" placeholder="Titel eingeben…" />
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" id="create-np-cancel">Abbrechen</button>
-      <button class="btn btn-primary" id="create-np-confirm">Erstellen</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: Share -->
-<div class="modal-overlay hidden" id="modal-share">
-  <div class="modal fade-in">
-    <h3>Link teilen</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Kopiere diesen Link, um deine Zeitung zu teilen</p>
-    <div class="share-url-box">
-      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-      <input id="share-url-input" readonly />
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" id="share-close">Schließen</button>
-      <button class="btn btn-primary" id="share-copy">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Link kopieren
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: Delete confirm -->
-<div class="modal-overlay hidden" id="modal-delete">
-  <div class="modal fade-in">
-    <h3>Artikel löschen?</h3>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:4px">Dieser Artikel wird unwiderruflich gelöscht.</p>
-    <div class="modal-footer">
-      <button class="btn btn-outline" id="delete-cancel">Abbrechen</button>
-      <button class="btn btn-danger" id="delete-confirm" style="background:var(--danger);color:#fff;border-color:var(--danger)">Löschen</button>
-    </div>
-  </div>
-</div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════
-const state = {
-  page: 'dashboard',
-  newspapers: [],
-  articles: [],
-  currentNpId: null,
-  editingArticle: null,
-  deleteTarget: null,
-  deleteType: null,
-};
-
-// ─── Local data (simulates base44 backend) ───
-let db = {
-  newspapers: JSON.parse(localStorage.getItem('pe_newspapers') || '[]'),
-  articles: JSON.parse(localStorage.getItem('pe_articles') || '[]'),
-};
-function save() {
-  localStorage.setItem('pe_newspapers', JSON.stringify(db.newspapers));
-  localStorage.setItem('pe_articles', JSON.stringify(db.articles));
-}
-function uid() { return Math.random().toString(36).slice(2,10); }
-
-// ─── Category labels ───
-const CAT_LABELS = {
-  nachrichten:'Nachrichten', politik:'Politik', wirtschaft:'Wirtschaft',
-  sport:'Sport', kultur:'Kultur', wissenschaft:'Wissenschaft',
-  meinung:'Meinung', unterhaltung:'Unterhaltung'
-};
-const SIZE_LABELS = { full:'Volle Breite', half:'Halbe Breite', third:'Drittel' };
-
-// ═══════════════════════════════════════════════════════
-//  NAV
-// ═══════════════════════════════════════════════════════
-const $ = (id) => document.getElementById(id);
-
-function showPage(name) {
-  ['dashboard','editor','article-editor','public'].forEach(p => {
-    const el = $('page-' + p.replace('-','_')) || $('page-' + p);
-    if (el) el.classList.add('hidden');
-  });
-  const target = $('page-' + name) || $('page-article-editor');
-  if (target) { target.classList.remove('hidden'); target.style.display = ''; }
-  $('nav-editor-controls').style.display = name === 'editor' ? 'flex' : 'none';
-  $('nav-editor-controls').classList.toggle('hidden', name !== 'editor');
-  $('nav-logo-text').textContent = 'Presse Editor';
-  state.page = name;
+// ─── TOAST NOTIFICATIONS ───
+function showToast(text, isError = false) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${isError ? 'error' : ''}`;
+  toast.innerText = text;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
 }
 
-$('logo-btn').onclick = () => { showPage('dashboard'); renderDashboard(); };
-$('btn-logout').onclick = () => toast('Abgemeldet (Demo)');
+// ─── AUTHENTICATION LOGIC ───
+const viewLogin = document.getElementById('auth-login');
+const viewRegister = document.getElementById('auth-register');
+const viewForgot = document.getElementById('auth-forgot');
+const mainNav = document.getElementById('nav');
+const pageDashboard = document.getElementById('page-dashboard');
 
-// ═══════════════════════════════════════════════════════
-//  TOAST
-// ═══════════════════════════════════════════════════════
-function toast(msg, type='') {
-  const el = document.createElement('div');
-  el.className = 'toast' + (type ? ' '+type : '');
-  el.textContent = msg;
-  $('toast-container').prepend(el);
-  setTimeout(() => el.remove(), 3000);
-}
+// Navigation between Auth screens
+document.getElementById('go-to-register').addEventListener('click', () => {
+  viewLogin.classList.add('hidden');
+  viewRegister.classList.remove('hidden');
+});
+document.getElementById('go-to-forgot').addEventListener('click', () => {
+  viewLogin.classList.add('hidden');
+  viewForgot.classList.remove('hidden');
+});
+document.getElementById('back-to-login-reg').addEventListener('click', () => {
+  viewRegister.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
+document.getElementById('back-to-login-forgot').addEventListener('click', () => {
+  viewForgot.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
 
-// ═══════════════════════════════════════════════════════
-//  DASHBOARD
-// ═══════════════════════════════════════════════════════
-function renderDashboard() {
-  showPage('dashboard');
-  const list = $('newspaper-list');
-  if (db.newspapers.length === 0) {
-    list.innerHTML = `<div class="empty-state">
-      <div class="empty-icon">📰</div>
-      <h3>Noch keine Zeitungen</h3>
-      <p>Erstelle deine erste Zeitungsausgabe</p>
-      <button class="btn btn-primary" onclick="openCreateNp()">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-        Erste Ausgabe erstellen
-      </button>
-    </div>`;
+// SUBMIT: REGISTER
+document.getElementById('submit-register').addEventListener('click', () => {
+  const email = document.getElementById('reg-email').value;
+  const pass = document.getElementById('reg-pass').value;
+
+  if(!email || !pass) {
+    showToast('Bitte füllen Sie alle Felder aus.', true);
     return;
   }
-  list.innerHTML = '<div class="newspaper-grid">' + db.newspapers.map(np => `
-    <div class="np-card">
-      <div class="np-card-cover">
-        ${np.cover_image ? `<img src="${np.cover_image}" alt="" />` : `<div class="np-card-initials">${(np.title||'').slice(0,2).toUpperCase()}</div>`}
-        ${np.published ? '<span class="badge badge-green np-card-published-badge"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg> Veröffentlicht</span>' : ''}
-      </div>
-      <div class="np-card-body">
-        <h3>${esc(np.title)}</h3>
-        ${np.edition_date ? `<p class="np-date"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${fmtDate(np.edition_date)}</p>` : '<p class="np-date" style="height:18px"></p>'}
-        <div class="np-card-actions">
-          <button class="btn btn-primary btn-sm" onclick="openEditor('${np.id}')">
-            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Bearbeiten
-          </button>
-          <button class="btn btn-outline btn-sm" onclick="deleteNp('${np.id}')" title="Löschen" style="padding:5px 10px">
-            <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>`).join('') + '</div>';
-}
 
-function openCreateNp() { $('modal-create-np').classList.remove('hidden'); $('create-np-title').focus(); }
-$('btn-create-newspaper').onclick = openCreateNp;
-$('create-np-cancel').onclick = () => $('modal-create-np').classList.add('hidden');
-$('create-np-confirm').onclick = () => {
-  const t = $('create-np-title').value.trim();
-  if (!t) return;
-  const np = { id: uid(), title: t, edition_date: new Date().toISOString().slice(0,10), published: false, publish_id: uid() };
-  db.newspapers.unshift(np); save();
-  $('modal-create-np').classList.add('hidden');
-  $('create-np-title').value = '';
-  toast('Zeitung erstellt!');
-  renderDashboard();
-};
-$('create-np-title').addEventListener('keydown', e => { if(e.key==='Enter') $('create-np-confirm').click(); });
+  // Save to LocalStorage
+  localStorage.setItem(`user_${email}`, pass);
+  showToast('Konto erfolgreich erstellt! Bitte loggen Sie sich ein.');
+  viewRegister.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
 
-function deleteNp(id) {
-  if (!confirm('Zeitung löschen?')) return;
-  db.newspapers = db.newspapers.filter(n => n.id !== id);
-  db.articles = db.articles.filter(a => a.newspaper_id !== id);
-  save(); toast('Gelöscht'); renderDashboard();
-}
+// SUBMIT: LOGIN
+document.getElementById('submit-login').addEventListener('click', () => {
+  const email = document.getElementById('login-email').value;
+  const pass = document.getElementById('login-pass').value;
 
-// ═══════════════════════════════════════════════════════
-//  EDITOR
-// ═══════════════════════════════════════════════════════
-function openEditor(npId) {
-  state.currentNpId = npId;
-  const np = db.newspapers.find(n => n.id === npId);
-  if (!np) return;
-  showPage('editor');
-  // Setup nav
-  $('nav-title-display').textContent = np.title;
-  $('nav-editor-controls').style.display = 'flex';
-  $('nav-editor-controls').classList.remove('hidden');
-  updatePublishBtn(np);
-  $('btn-share').classList.toggle('hidden', !np.published);
-  renderArticleList();
-  renderCanvas();
-}
+  const storedPass = localStorage.getItem(`user_${email}`);
 
-function updatePublishBtn(np) {
-  const icon = np.published
-    ? `<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
-    : `<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 117-7m-7 7v-7M17 8l-5-5-5 5M12 3v10"/></svg>`;
-  $('publish-label').innerHTML = icon + ' ' + (np.published ? 'Entfernen' : 'Veröffentlichen');
-  $('btn-share').classList.toggle('hidden', !np.published);
-  $('btn-preview').classList.toggle('hidden', !np.published);
-}
-
-$('nav-title-display').onclick = function() {
-  $('nav-title-display').classList.add('hidden');
-  $('nav-title-edit').classList.remove('hidden');
-  $('nav-title-input').value = $('nav-title-display').textContent;
-  $('nav-title-input').focus();
-};
-$('nav-title-input').addEventListener('blur', saveTitle);
-$('nav-title-input').addEventListener('keydown', e => { if(e.key==='Enter') saveTitle(); });
-function saveTitle() {
-  const np = db.newspapers.find(n => n.id === state.currentNpId);
-  if (!np) return;
-  np.title = $('nav-title-input').value.trim() || np.title;
-  save();
-  $('nav-title-display').textContent = np.title;
-  $('nav-title-display').classList.remove('hidden');
-  $('nav-title-edit').classList.add('hidden');
-}
-
-$('btn-publish').onclick = () => {
-  const np = db.newspapers.find(n => n.id === state.currentNpId);
-  if (!np) return;
-  np.published = !np.published;
-  save(); updatePublishBtn(np);
-  toast(np.published ? 'Zeitung veröffentlicht!' : 'Veröffentlichung aufgehoben');
-};
-$('btn-share').onclick = () => {
-  const np = db.newspapers.find(n => n.id === state.currentNpId);
-  if (!np) return;
-  $('share-url-input').value = location.origin + location.pathname + '?view=' + np.publish_id;
-  $('modal-share').classList.remove('hidden');
-};
-$('btn-preview').onclick = () => {
-  const np = db.newspapers.find(n => n.id === state.currentNpId);
-  if (np) openPublicView(np.publish_id);
-};
-$('share-close').onclick = () => $('modal-share').classList.add('hidden');
-$('share-copy').onclick = () => {
-  navigator.clipboard.writeText($('share-url-input').value).catch(()=>{});
-  toast('✓ Link kopiert!');
-};
-$('btn-new-article').onclick = () => openArticleEditor(null);
-$('sidebar-new-article').onclick = () => openArticleEditor(null);
-
-function renderArticleList() {
-  const articles = db.articles.filter(a => a.newspaper_id === state.currentNpId).sort((a,b) => a.order_index - b.order_index);
-  const el = $('article-list');
-  if (articles.length === 0) {
-    el.innerHTML = `<div class="empty-state" style="padding:40px 10px">
-      <div class="empty-icon" style="width:48px;height:48px;font-size:20px">📄</div>
-      <h3 style="font-size:16px">Keine Artikel</h3>
-      <p>Füge deinen ersten Artikel hinzu</p>
-    </div>`; return;
-  }
-  el.innerHTML = articles.map(a => `
-    <div class="article-item">
-      <div class="article-thumb">
-        ${a.image_url ? `<img src="${a.image_url}" alt="" />` : `<svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`}
-      </div>
-      <div class="article-info" onclick="openArticleEditor('${a.id}')" style="cursor:pointer">
-        <h4>${esc(a.headline) || '(kein Titel)'}</h4>
-        ${a.subtitle ? `<p>${esc(a.subtitle)}</p>` : ''}
-        <div class="badges">
-          <span class="badge">${CAT_LABELS[a.category] || a.category || ''}</span>
-          <span class="badge">${SIZE_LABELS[a.layout_size] || ''}</span>
-          ${a.author ? `<span style="font-size:11px;color:var(--muted)">von ${esc(a.author)}</span>` : ''}
-        </div>
-      </div>
-      <div class="article-actions">
-        <button onclick="openArticleEditor('${a.id}')" title="Bearbeiten"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        <button class="del-btn" onclick="confirmDeleteArticle('${a.id}')" title="Löschen"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
-      </div>
-    </div>`).join('');
-}
-
-function renderCanvas() {
-  const np = db.newspapers.find(n => n.id === state.currentNpId);
-  const articles = db.articles.filter(a => a.newspaper_id === state.currentNpId).sort((a,b) => a.order_index - b.order_index);
-  const full = articles.filter(a => a.layout_size === 'full');
-  const half = articles.filter(a => a.layout_size === 'half');
-  const third = articles.filter(a => a.layout_size === 'third');
-  const canvas = $('newspaper-canvas');
-  canvas.innerHTML = `<div class="newspaper-canvas">
-    <div class="np-header-area">
-      ${np.edition_date ? `<p class="np-edition-date">${fmtDateLong(np.edition_date)}</p>` : ''}
-      <h1>${esc(np.title)}</h1>
-      ${np.subtitle ? `<p class="np-subtitle">${esc(np.subtitle)}</p>` : ''}
-      <hr class="np-rule" />
-    </div>
-    ${articles.length === 0 ? `<div class="empty-state"><div class="empty-icon">📝</div><h3>Noch keine Artikel</h3><p>Fang jetzt an!</p><button class="btn btn-primary" onclick="openArticleEditor(null)"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Ersten Artikel erstellen</button></div>` : `
-    <div class="canvas-articles">
-      ${full.map((a,i) => articleBlock(a) + (i < full.length-1 ? '<hr style="border:none;border-top:1px solid var(--border);margin-top:0">' : '')).join('')}
-      ${half.length ? `<div class="half-grid">${half.map(a => articleBlock(a)).join('')}</div>` : ''}
-      ${third.length ? `<div class="third-grid">${third.map(a => articleBlock(a)).join('')}</div>` : ''}
-      <div class="add-article-row">
-        <button class="btn btn-outline" onclick="openArticleEditor(null)" style="border-style:dashed">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          Artikel hinzufügen
-        </button>
-      </div>
-    </div>`}
-  </div>`;
-}
-
-function articleBlock(a) {
-  const hSize = a.layout_size === 'full' ? '32px' : a.layout_size === 'half' ? '22px' : '18px';
-  const imgH = a.layout_size === 'full' ? '220px' : '140px';
-  return `<div class="canvas-article-block" onclick="openArticleEditor('${a.id}')">
-    <div class="block-actions">
-      <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openArticleEditor('${a.id}')">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        Bearbeiten
-      </button>
-      <button class="btn btn-sm" style="background:#fde8e6;color:var(--danger)" onclick="event.stopPropagation();confirmDeleteArticle('${a.id}')">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-      </button>
-    </div>
-    ${a.category ? `<p class="cat-label">${CAT_LABELS[a.category] || a.category}</p>` : ''}
-    <h2 style="font-size:${hSize}">${esc(a.headline || '(kein Titel)')}</h2>
-    ${a.subtitle ? `<p class="art-subtitle">${esc(a.subtitle)}</p>` : ''}
-    ${a.author ? `<p class="art-author">Von ${esc(a.author)}</p>` : ''}
-    ${a.image_url ? `<img src="${a.image_url}" style="height:${imgH}" alt="" />` : ''}
-    ${a.image_caption ? `<p style="font-size:11px;font-style:italic;color:var(--muted);margin-bottom:8px">${esc(a.image_caption)}</p>` : ''}
-    ${a.content ? `<div class="art-body">${a.content}</div>` : ''}
-  </div>`;
-}
-
-// ─── Delete article ───
-function confirmDeleteArticle(id) {
-  state.deleteTarget = id; state.deleteType = 'article';
-  $('modal-delete').classList.remove('hidden');
-}
-$('delete-cancel').onclick = () => $('modal-delete').classList.add('hidden');
-$('delete-confirm').onclick = () => {
-  if (state.deleteType === 'article') {
-    db.articles = db.articles.filter(a => a.id !== state.deleteTarget);
-    save(); toast('Artikel gelöscht');
-    $('modal-delete').classList.add('hidden');
-    renderArticleList(); renderCanvas();
-  }
-};
-
-// ═══════════════════════════════════════════════════════
-//  ARTICLE EDITOR (WORD-STYLE)
-// ═══════════════════════════════════════════════════════
-let aeArticleId = null;
-
-function openArticleEditor(articleId) {
-  aeArticleId = articleId;
-  const ae = $('page-article-editor');
-  ae.classList.remove('hidden');
-  ae.style.display = '';
-  $('page-editor').classList.add('hidden');
-  $('nav-editor-controls').style.display = 'none';
-
-  // Hide image zone by default, show upload button
-  $('ae-image-preview').classList.add('hidden');
-  $('ae-image-upload-btn').classList.remove('hidden');
-
-  if (articleId) {
-    const a = db.articles.find(x => x.id === articleId);
-    if (!a) return;
-    $('ae-author').value = a.author || '';
-    $('ae-category').value = a.category || 'nachrichten';
-    $('ae-size').value = a.layout_size || 'full';
-    autoResize($('ae-headline'), a.headline || '');
-    autoResize($('ae-subtitle'), a.subtitle || '');
-    $('ae-content').innerHTML = a.content || '';
-    if (a.image_url) {
-      $('ae-image-el').src = a.image_url;
-      $('ae-image-caption').value = a.image_caption || '';
-      $('ae-image-preview').classList.remove('hidden');
-      $('ae-image-upload-btn').classList.add('hidden');
-    }
+  if (storedPass && storedPass === pass) {
+    showToast('Erfolgreich eingeloggt!');
+    // Hide auth screens
+    viewLogin.classList.add('hidden');
+    // Show Main app content
+    mainNav.classList.remove('hidden');
+    pageDashboard.classList.remove('hidden');
   } else {
-    $('ae-author').value = '';
-    $('ae-category').value = 'nachrichten';
-    $('ae-size').value = 'full';
-    autoResize($('ae-headline'), '');
-    autoResize($('ae-subtitle'), '');
-    $('ae-content').innerHTML = '';
-    $('ae-image-el').src = '';
-    $('ae-image-caption').value = '';
+    showToast('Ungültige E-Mail-Adresse oder Passwort.', true);
   }
-  updateWordCount();
-  $('ae-headline').focus();
-  // scroll to top
-  window.scrollTo(0,0);
-}
-
-function autoResize(el, val) {
-  el.value = val;
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
-['ae-headline','ae-subtitle'].forEach(id => {
-  $(id).addEventListener('input', function(){ this.style.height='auto'; this.style.height=this.scrollHeight+'px'; });
 });
 
-$('ae-content').addEventListener('input', updateWordCount);
-function updateWordCount() {
-  const txt = ($('ae-content').innerText || '').trim();
-  const words = txt ? txt.split(/\s+/).length : 0;
-  $('ae-word-count').textContent = words + ' Wörter';
-}
-
-$('ae-close').onclick = () => {
-  $('page-article-editor').classList.add('hidden');
-  openEditor(state.currentNpId);
-};
-
-$('ae-save').onclick = saveArticle;
-function saveArticle() {
-  const headline = $('ae-headline').value.trim();
-  if (!headline) { toast('Bitte Überschrift eingeben', 'error'); return; }
-  $('ae-save-label').textContent = 'Speichern…';
-  $('ae-save').disabled = true;
-  const data = {
-    newspaper_id: state.currentNpId,
-    headline,
-    subtitle: $('ae-subtitle').value.trim(),
-    author: $('ae-author').value.trim(),
-    category: $('ae-category').value,
-    layout_size: $('ae-size').value,
-    content: $('ae-content').innerHTML,
-    image_url: $('ae-image-el').src && $('ae-image-el').src !== location.href ? $('ae-image-el').src : '',
-    image_caption: $('ae-image-caption').value.trim(),
-  };
-  setTimeout(() => {
-    if (aeArticleId) {
-      const a = db.articles.find(x => x.id === aeArticleId);
-      if (a) Object.assign(a, data);
-    } else {
-      data.id = uid();
-      data.order_index = db.articles.filter(a => a.newspaper_id === state.currentNpId).length;
-      db.articles.push(data);
-    }
-    save();
-    $('ae-save-label').textContent = 'Gespeichert ✓';
-    $('ae-save').disabled = false;
-    setTimeout(() => { $('ae-save-label').textContent = 'Speichern'; }, 1500);
-    toast(aeArticleId ? 'Artikel aktualisiert!' : 'Artikel gespeichert!');
-    renderArticleList(); renderCanvas();
-  }, 300);
-}
-
-// ─── Toolbar ───
-document.querySelectorAll('[data-cmd]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.execCommand(btn.dataset.cmd, false, null);
-    $('ae-content').focus();
-  });
+// SUBMIT: FORGOT PASSWORD
+document.getElementById('submit-forgot').addEventListener('click', () => {
+  const email = document.getElementById('forgot-email').value;
+  if(!email) {
+    showToast('Bitte geben Sie Ihre E-Mail-Adresse ein.', true);
+    return;
+  }
+  showToast('Link zum Zurücksetzen des Passworts wurde gesendet!');
+  viewForgot.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
 });
 
-$('tb-blockquote').onclick = () => {
-  const sel = window.getSelection();
-  if (sel && sel.rangeCount) {
-    const range = sel.getRangeAt(0);
-    const bq = document.createElement('blockquote');
-    try { range.surroundContents(bq); } catch(e) { document.execCommand('formatBlock', false, 'blockquote'); }
-  } else { document.execCommand('formatBlock', false, 'blockquote'); }
-  $('ae-content').focus();
-};
-
-$('tb-format').onchange = function() {
-  if (this.value === 'p') document.execCommand('formatBlock', false, 'p');
-  else document.execCommand('formatBlock', false, this.value);
-  $('ae-content').focus();
-};
-
-$('tb-link').onclick = () => {
-  const url = prompt('URL eingeben:');
-  if (url) { document.execCommand('createLink', false, url); }
-  $('ae-content').focus();
-};
-
-// ─── Image upload (reads as data URL for demo) ───
-$('ae-image-upload-btn').onclick = () => $('ae-file-input').click();
-$('ae-image-change').onclick = () => $('ae-file-input').click();
-$('ae-image-remove').onclick = () => {
-  $('ae-image-el').src = '';
-  $('ae-image-preview').classList.add('hidden');
-  $('ae-image-upload-btn').classList.remove('hidden');
-};
-$('tb-image').onclick = () => $('ae-file-input').click();
-
-$('ae-file-input').onchange = function(e) {
-  const file = e.target.files[0]; if (!file) return;
-  $('ae-upload-status').classList.remove('hidden');
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const url = ev.target.result;
-    // If triggered from toolbar, insert into content
-    if (document.activeElement === $('ae-content') || this._fromToolbar) {
-      document.execCommand('insertImage', false, url);
-    } else {
-      $('ae-image-el').src = url;
-      $('ae-image-preview').classList.remove('hidden');
-      $('ae-image-upload-btn').classList.add('hidden');
-    }
-    $('ae-upload-status').classList.add('hidden');
-  };
-  reader.readAsDataURL(file);
-  this.value = '';
-};
-
-// Track toolbar image vs article image
-$('tb-image').onclick = () => {
-  $('ae-file-input')._fromToolbar = true;
-  $('ae-file-input').click();
-};
-$('ae-image-upload-btn').onclick = () => { $('ae-file-input')._fromToolbar = false; $('ae-file-input').click(); };
-$('ae-image-change').onclick = () => { $('ae-file-input')._fromToolbar = false; $('ae-file-input').click(); };
-
-// Toolbar state update
-$('ae-content').addEventListener('keyup', updateToolbarState);
-$('ae-content').addEventListener('mouseup', updateToolbarState);
-function updateToolbarState() {
-  ['bold','italic','underline'].forEach(cmd => {
-    const btn = document.querySelector(`[data-cmd="${cmd}"]`);
-    if (btn) btn.classList.toggle('active', document.queryCommandState(cmd));
-  });
-}
-
-// ═══════════════════════════════════════════════════════
-//  PUBLIC VIEW
-// ═══════════════════════════════════════════════════════
-function openPublicView(publishId) {
-  const np = db.newspapers.find(n => n.publish_id === publishId && n.published);
-  if (!np) { toast('Zeitung nicht verfügbar', 'error'); return; }
-  const articles = db.articles.filter(a => a.newspaper_id === np.id).sort((a,b) => a.order_index - b.order_index);
-  const full = articles.filter(a => a.layout_size === 'full');
-  const half = articles.filter(a => a.layout_size === 'half');
-  const third = articles.filter(a => a.layout_size === 'third');
-
-  $('public-content').innerHTML = `
-    <div class="pv-header">
-      ${np.edition_date ? `<p class="pv-date">${fmtDateLong(np.edition_date)}</p>` : ''}
-      <h1 class="pv-title">${esc(np.title)}</h1>
-      ${np.subtitle ? `<p class="pv-subtitle">${esc(np.subtitle)}</p>` : ''}
-      <hr class="pv-rule" />
-    </div>
-    <div>
-      ${full.map((a,i) => publicArticle(a,'full') + (i<full.length-1 ? '<hr class="art-sep">' : '')).join('')}
-      ${half.length ? `<div class="half-grid" style="margin-top:32px;padding-top:32px;border-top:1px solid var(--border)">${half.map(a=>publicArticle(a,'half')).join('')}</div>` : ''}
-      ${third.length ? `<div class="third-grid" style="margin-top:32px;padding-top:32px;border-top:1px solid var(--border)">${third.map(a=>publicArticle(a,'third')).join('')}</div>` : ''}
-    </div>`;
-
-  showPage('public');
-  $('nav-editor-controls').style.display = 'none';
-  window.scrollTo(0,0);
-}
-
-function publicArticle(a, size) {
-  const hSize = size==='full' ? '38px' : size==='half' ? '24px' : '20px';
-  const imgH = size==='full' ? '360px' : size==='half' ? '220px' : '150px';
-  return `<article class="pub-article">
-    ${a.category ? `<p class="cat-label">${CAT_LABELS[a.category] || a.category}</p>` : ''}
-    <h2 style="font-size:${hSize}">${esc(a.headline)}</h2>
-    ${a.subtitle ? `<p class="art-sub">${esc(a.subtitle)}</p>` : ''}
-    ${a.author ? `<p class="art-auth">Von ${esc(a.author)}</p>` : ''}
-    ${a.image_url ? `<img class="art-img" src="${a.image_url}" style="height:${imgH}" alt="" />` : ''}
-    ${a.image_caption ? `<p class="art-caption">${esc(a.image_caption)}</p>` : ''}
-    ${a.content ? `<div class="art-content">${a.content}</div>` : ''}
-  </article>`;
-}
-
-// ═══════════════════════════════════════════════════════
-//  HELPERS
-// ═══════════════════════════════════════════════════════
-function esc(str) {
-  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function fmtDate(d) {
-  if (!d) return '';
-  try { return new Date(d).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'}); } catch(e) { return d; }
-}
-function fmtDateLong(d) {
-  if (!d) return '';
-  try { return new Date(d).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'}); } catch(e) { return d; }
-}
-
-// ═══════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════
-// Check for public view URL param
-const urlParams = new URLSearchParams(location.search);
-const viewId = urlParams.get('view');
-if (viewId) {
-  openPublicView(viewId);
-} else {
-  renderDashboard();
-  showPage('dashboard');
-}
+// LOGOUT
+document.getElementById('btn-logout').addEventListener('click', () => {
+  mainNav.classList.add('hidden');
+  pageDashboard.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+  showToast('Erfolgreich abgemeldet.');
+});
 </script>
 </body>
 </html>
