@@ -59,13 +59,13 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 #nav .nav-title:hover{background:#f0ece2}
 #nav .nav-title-input{font-family:var(--font-heading);font-size:16px;font-weight:700;border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;background:#fff;outline:none;width:200px}
 
-/* ─── AUTH FORM ─── */
+/* ─── AUTHENTICATION STYLES ─── */
 .auth-container{max-width:400px;margin:80px auto;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 10px 30px rgba(0,0,0,0.05)}
 .auth-container h2{font-size:26px;margin-bottom:8px;text-align:center}
 .auth-container p{color:var(--muted);font-size:14px;text-align:center;margin-bottom:24px}
 .auth-container .field{margin-bottom:16px}
 .auth-container .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
-.auth-container .field input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);outline:none;font-size:14px}
+.auth-container .field input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);outline:none;font-size:14px;background:#fff}
 .auth-container .field input:focus{border-color:var(--fg)}
 .auth-footer-links{display:flex;justify-content:space-between;margin-top:16px;font-size:13px}
 .auth-footer-links a{color:var(--accent);text-decoration:none;cursor:pointer}
@@ -75,6 +75,7 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 .page{max-width:1100px;margin:0 auto;padding:40px 24px}
 
 /* ─── DASHBOARD ─── */
+#page-dashboard{}
 .dash-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px}
 .dash-header h2{font-size:32px;font-weight:900}
 .dash-header p{color:var(--muted);margin-top:4px;font-size:14px}
@@ -94,21 +95,52 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 .empty-state .empty-icon{width:64px;height:64px;background:#f0ece2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
 .empty-state h3{font-size:20px;margin-bottom:8px}
 .empty-state p{color:var(--muted);margin-bottom:24px;font-size:14px}
+.loading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.skeleton{background:#f0ece2;border-radius:var(--radius-lg);height:220px;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
 
 /* ─── EDITOR PAGE ─── */
 #page-editor .editor-layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
 @media(max-width:800px){#page-editor .editor-layout{grid-template-columns:1fr}}
+.editor-sidebar{}
 .sidebar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .sidebar-header h3{font-size:15px;font-weight:600}
+.article-list{display:flex;flex-direction:column;gap:10px}
 .article-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s}
 .article-item:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .article-thumb{width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#f0ece2;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.article-thumb img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+.article-info{flex:1;min-width:0}
+.article-info h4{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.article-info p{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}
+.article-info .badges{display:flex;gap:4px;flex-wrap:wrap}
+.article-actions{display:flex;gap:4px;flex-shrink:0}
+.article-actions button{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:none;background:transparent;cursor:pointer;color:var(--muted);transition:all 0.15s}
+.article-actions button:hover{background:#f0ece2;color:var(--fg)}
+.article-actions .del-btn:hover{background:#fde8e6;color:var(--danger)}
 
 /* ─── NEWSPAPER CANVAS ─── */
 .newspaper-canvas{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;min-height:500px}
 .np-header-area{text-align:center;border-bottom:4px double var(--fg);padding-bottom:24px;margin-bottom:32px}
 .np-header-area .np-edition-date{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .np-header-area h1{font-family:var(--font-heading);font-size:clamp(32px,6vw,64px);font-weight:900;line-height:1;letter-spacing:-1px}
+.np-header-area .np-subtitle{color:var(--muted);font-style:italic;margin-top:10px;font-size:15px}
+.np-header-area .np-rule{border:none;border-top:1px solid var(--border);margin-top:16px}
+.canvas-articles{display:flex;flex-direction:column;gap:32px}
+.canvas-article-block{position:relative;padding:16px;border-radius:var(--radius);cursor:pointer;transition:background 0.15s}
+.canvas-article-block:hover{background:#faf8f4}
+.canvas-article-block .block-actions{position:absolute;top:12px;right:12px;display:none;gap:6px;z-index:10}
+.canvas-article-block:hover .block-actions{display:flex}
+.canvas-article-block .cat-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.canvas-article-block h2{font-family:var(--font-heading);font-weight:900;line-height:1.15;margin-bottom:8px}
+.canvas-article-block .art-subtitle{color:var(--muted);font-style:italic;margin-bottom:10px;font-size:14px}
+.canvas-article-block .art-author{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
+.canvas-article-block img{width:100%;object-fit:cover;border-radius:4px;margin-bottom:8px}
+.canvas-article-block .art-body{font-family:var(--font-serif);font-size:14px;line-height:1.8;color:#333;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.canvas-article-block hr{border:none;border-top:1px solid var(--border);margin:32px 0 0}
+.half-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.third-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.add-article-row{display:flex;justify-content:center;padding-top:8px}
 
 /* ─── MODAL ─── */
 .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px)}
@@ -116,15 +148,108 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 .modal h3{font-size:20px;font-weight:700;margin-bottom:20px}
 .modal .field{margin-bottom:16px}
 .modal .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--fg)}
-.modal .field input,.modal .field select{width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:var(--radius);font-size:14px;outline:none;background:#fff}
+.modal .field input,.modal .field select{width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:var(--radius);font-size:14px;outline:none;transition:border-color 0.15s;background:#fff}
+.modal .field input:focus,.modal .field select:focus{border-color:#888}
 .modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:24px}
+.share-url-box{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f0ece2;border-radius:var(--radius);border:1px solid var(--border)}
+.share-url-box input{flex:1;background:transparent;border:none;outline:none;font-size:13px;color:var(--fg)}
+
+/* ══════════════════════════════════════════
+   ARTICLE EDITOR — WORD-STYLE (KEY CHANGE)
+   ══════════════════════════════════════════ */
+#page-article-editor{min-height:100vh;background:var(--bg)}
+.ae-topbar{position:sticky;top:0;z-index:100;background:rgba(255,252,245,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 24px}
+.ae-topbar-inner{max-width:860px;margin:0 auto;height:56px;display:flex;align-items:center;gap:12px}
+.ae-topbar .spacer{flex:1}
+.ae-topbar .upload-status{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* Word-style toolbar — no black borders, no arrows, clean pill tabs */
+.ae-word-toolbar{background:#f5f2ea;padding:8px 12px;display:flex;align-items:center;gap:2px;flex-wrap:wrap;border-bottom:1px solid #e8e4da;position:sticky;top:56px;z-index:90}
+.ae-word-toolbar .toolbar-sep{width:1px;height:22px;background:#d0ccc0;margin:0 6px}
+.ae-tb-btn{width:32px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;border:none;background:transparent;cursor:pointer;color:#555;font-size:13px;font-weight:600;transition:all 0.12s;font-family:var(--font-body)}
+.ae-tb-btn:hover{background:rgba(0,0,0,0.08);color:#111}
+.ae-tb-btn.active{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.12);color:#111}
+.ae-tb-btn svg{pointer-events:none}
+.ae-tb-dropdown{display:flex;align-items:center;gap:4px;padding:0 8px;height:28px;border-radius:5px;background:transparent;border:none;cursor:pointer;font-size:12px;font-weight:500;color:#555;font-family:var(--font-body);transition:all 0.12s}
+.ae-tb-dropdown:hover{background:rgba(0,0,0,0.08);color:#111}
+.ae-tb-select{height:28px;border:none;background:transparent;font-size:12px;color:#555;font-family:var(--font-body);cursor:pointer;outline:none;border-radius:5px;padding:0 6px;transition:all 0.12s}
+.ae-tb-select:hover{background:rgba(0,0,0,0.08)}
+.ae-tb-select:focus{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+
+/* The document area — clean white page like Word */
+.ae-document-area{max-width:860px;margin:0 auto;padding:24px 24px 60px}
+.ae-document-page{background:#fff;border-radius:3px;box-shadow:0 1px 8px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);padding:56px 72px;min-height:500px}
+@media(max-width:700px){.ae-document-page{padding:32px 24px}}
+
+/* Meta fields — clean, no visible box borders */
+.ae-meta-section{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #eeebe3}
+@media(max-width:600px){.ae-meta-section{grid-template-columns:1fr}}
+.ae-meta-field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
+.ae-meta-input{width:100%;border:none;border-bottom:1.5px solid #e8e4da;border-radius:0;padding:4px 0 6px;font-size:14px;font-family:var(--font-body);color:var(--fg);background:transparent;outline:none;transition:border-color 0.15s}
+.ae-meta-input:focus{border-bottom-color:#888}
+.ae-meta-input::placeholder{color:#bbb}
+.ae-meta-select{width:100%;border:none;border-bottom:1.5px solid #e8e4da;border-radius:0;padding:4px 0 6px;font-size:14px;font-family:var(--font-body);color:var(--fg);background:transparent;outline:none;cursor:pointer;-webkit-appearance:none;transition:border-color 0.15s}
+.ae-meta-select:focus{border-bottom-color:#888}
+
+/* Headline input — big, editorial */
+.ae-headline-input{width:100%;border:none;background:transparent;outline:none;font-family:var(--font-heading);font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;color:var(--fg);margin-bottom:10px;resize:none;overflow:hidden}
+.ae-headline-input::placeholder{color:#ccc}
+
+/* Subtitle input */
+.ae-subtitle-input{width:100%;border:none;background:transparent;outline:none;font-family:var(--font-heading);font-size:18px;font-weight:400;font-style:italic;color:#666;margin-bottom:28px;border-bottom:1px solid #eeebe3;padding-bottom:16px;resize:none;overflow:hidden}
+.ae-subtitle-input::placeholder{color:#ddd}
+
+/* Image zone */
+.ae-image-zone{margin-bottom:28px}
+.ae-image-preview{position:relative;border-radius:var(--radius);overflow:hidden}
+.ae-image-preview img{width:100%;max-height:340px;object-fit:cover;display:block}
+.ae-image-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);opacity:0;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.ae-image-preview:hover .ae-image-overlay{opacity:1}
+.ae-image-caption{width:100%;border:none;background:transparent;outline:none;font-size:12px;font-style:italic;color:var(--muted);padding:8px 0 4px;border-bottom:1px solid #eeebe3;margin-top:6px}
+.ae-image-caption::placeholder{color:#ccc}
+.ae-image-upload-btn{width:100%;height:120px;border:1.5px dashed #d0ccc0;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#aaa;background:transparent;cursor:pointer;transition:all 0.15s}
+.ae-image-upload-btn:hover{border-color:#aaa;color:#777;background:#fafaf7}
+
+/* The rich text content area — no borders at all, pure white writing */
+.ae-content-area{min-height:280px;font-family:var(--font-serif);font-size:16px;line-height:1.9;color:#222;outline:none;word-break:break-word}
+.ae-content-area:empty::before{content:attr(data-placeholder);color:#ccc;pointer-events:none;font-style:italic}
+.ae-content-area p{margin-bottom:0.85em}
+.ae-content-area h1{font-family:var(--font-heading);font-size:26px;font-weight:800;margin:1.2em 0 0.4em;line-height:1.2}
+.ae-content-area h2{font-family:var(--font-heading);font-size:21px;font-weight:700;margin:1.1em 0 0.35em;line-height:1.25}
+.ae-content-area h3{font-family:var(--font-heading);font-size:17px;font-weight:700;margin:1em 0 0.3em}
+.ae-content-area blockquote{border-left:3px solid #c8b890;margin:1.4em 0;padding:6px 20px;font-style:italic;color:#555;background:#fdfaf4}
+.ae-content-area strong{font-weight:700}
+.ae-content-area em{font-style:italic}
+.ae-content-area ul,.ae-content-area ol{padding-left:24px;margin-bottom:0.85em}
+.ae-content-area li{margin-bottom:4px}
+.ae-content-area img{max-width:100%;border-radius:6px;margin:12px 0;display:block}
+.ae-content-area a{color:var(--accent);text-decoration:underline}
+.ae-tip{text-align:center;font-size:12px;color:#aaa;padding:16px 0 0;font-style:italic}
+.ae-word-count{font-size:11px;color:#bbb;text-align:right;padding:8px 0;border-top:1px solid #eeebe3;margin-top:16px}
+
+/* ─── PUBLIC VIEW ─── */
+#page-public .pv-header{border-bottom:4px double var(--fg);padding:32px 0 24px;margin-bottom:40px;text-align:center}
+#page-public .pv-date{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+#page-public .pv-title{font-family:var(--font-heading);font-size:clamp(36px,8vw,72px);font-weight:900;line-height:1;letter-spacing:-1px}
+#page-public .pv-subtitle{color:var(--muted);font-style:italic;margin-top:12px;font-size:16px}
+#page-public .pv-rule{border:none;border-top:1px solid var(--border);margin-top:16px}
+#page-public .pub-article{margin-bottom:40px}
+#page-public .pub-article .cat-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+#page-public .pub-article h2{font-family:var(--font-heading);font-weight:900;line-height:1.15;margin-bottom:10px}
+#page-public .pub-article .art-sub{font-style:italic;color:var(--muted);margin-bottom:12px}
+#page-public .pub-article .art-auth{font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:14px}
+#page-public .pub-article img.art-img{width:100%;object-fit:cover;border-radius:4px;margin-bottom:10px}
+#page-public .pub-article .art-caption{font-size:12px;font-style:italic;color:var(--muted);margin-bottom:12px}
+#page-public .pub-article .art-content{font-family:var(--font-serif);font-size:16px;line-height:1.85}
+#page-public .art-sep{border:none;border-top:1px solid var(--border);margin:40px 0 0}
 
 /* ─── TOAST ─── */
 #toast-container{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--fg);color:#fff;padding:10px 18px;border-radius:var(--radius);font-size:13px;animation:slideUp 0.25s ease;}
+.toast{background:var(--fg);color:#fff;padding:10px 18px;border-radius:var(--radius);font-size:13px;animation:slideUp 0.25s ease;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
 .toast.error{background:var(--danger)}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+/* ─── ICONS SVG helpers ─── */
 svg.icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 svg.icon-sm{width:14px;height:14px}
 svg.icon-lg{width:20px;height:20px}
@@ -144,12 +269,26 @@ svg.icon-lg{width:20px;height:20px}
       <span id="nav-logo-text">Zeitung</span>
     </div>
     <div class="spacer"></div>
-    <div id="nav-editor-controls" style="display:none;align-items:center;gap:8px">
+    <div id="nav-editor-controls" class="hidden" style="display:none;align-items:center;gap:8px">
       <span id="nav-title-display" class="nav-title"></span>
       <div id="nav-title-edit" class="hidden"><input class="nav-title-input" id="nav-title-input" /></div>
-      <button class="btn btn-outline btn-sm" id="btn-share">Teilen</button>
-      <button class="btn btn-outline btn-sm" id="btn-preview">Ansehen</button>
-      <button class="btn btn-primary btn-sm" id="btn-publish">Veröffentlichen</button>
+      <div class="spacer" style="min-width:16px"></div>
+      <button class="btn btn-outline btn-sm hidden" id="btn-share">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zM18 22a3 3 0 100-6 3 3 0 000 6zM8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+        Teilen
+      </button>
+      <button class="btn btn-outline btn-sm hidden" id="btn-preview">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M1xl 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Ansehen
+      </button>
+      <button class="btn btn-primary btn-sm" id="btn-publish">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 117-7m-7 7v-7M17 8l-5-5-5 5M12 3v10"/></svg>
+        <span id="publish-label">Veröffentlichen</span>
+      </button>
+      <button class="btn btn-primary btn-sm" id="btn-new-article">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        Artikel
+      </button>
     </div>
     <button class="btn btn-ghost btn-sm" id="btn-logout" style="color:var(--muted)">
       <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
@@ -158,7 +297,7 @@ svg.icon-lg{width:20px;height:20px}
   </div>
 </header>
 
-<!-- ═══════════════════════════════ AUTH PAGES ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ SESSIONS SCREEN ═══════════════════════════════ -->
 <!-- LOGIN -->
 <div id="auth-login" class="auth-container fade-in">
   <h2>Anmelden bei Zeitung</h2>
@@ -213,6 +352,7 @@ svg.icon-lg{width:20px;height:20px}
 </div>
 
 <!-- ═══════════════════════════════ PAGES ═══════════════════════════════ -->
+
 <!-- DASHBOARD -->
 <main id="page-dashboard" class="page hidden">
   <div class="dash-header">
@@ -220,17 +360,220 @@ svg.icon-lg{width:20px;height:20px}
       <h2>Meine Zeitungen</h2>
       <p>Erstelle und verwalte deine Zeitungsausgaben</p>
     </div>
-    <button class="btn btn-primary" id="btn-create-newspaper">Neue Ausgabe</button>
+    <button class="btn btn-primary" id="btn-create-newspaper">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      Neue Ausgabe
+    </button>
   </div>
-  <div class="empty-state">
-    <div class="empty-icon">📰</div>
-    <h3>Keine Zeitungen</h3>
-    <p>Erstellen Sie Ihre erste Zeitungsausgabe, um zu beginnen.</p>
+  <div id="newspaper-list"></div>
+</main>
+
+<!-- EDITOR -->
+<main id="page-editor" class="page hidden">
+  <div class="editor-layout">
+    <aside class="editor-sidebar">
+      <div class="sidebar-header">
+        <h3>Artikel</h3>
+        <button class="btn btn-outline btn-sm" id="sidebar-new-article">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Neu
+        </button>
+      </div>
+      <div id="article-list"></div>
+    </aside>
+    <div id="newspaper-canvas"></div>
   </div>
 </main>
 
+<!-- ARTICLE EDITOR (Word-style) -->
+<div id="page-article-editor" class="hidden">
+  <div class="ae-topbar">
+    <div class="ae-topbar-inner">
+      <button class="btn btn-ghost" id="ae-close">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Schließen
+      </button>
+      <div class="spacer"></div>
+      <div class="ae-upload-status hidden" id="ae-upload-status">
+        <svg class="icon icon-sm spin" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        Hochladen…
+      </div>
+      <button class="btn btn-primary" id="ae-save" style="border-radius:20px;padding:7px 20px">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span id="ae-save-label">Speichern</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Word-style formatting toolbar -->
+  <div class="ae-word-toolbar" id="ae-toolbar">
+    <select class="ae-tb-select" id="tb-format" title="Format">
+      <option value="p">Absatz</option>
+      <option value="h1">Überschrift 1</option>
+      <option value="h2">Überschrift 2</option>
+      <option value="h3">Überschrift 3</option>
+    </select>
+    <div class="toolbar-sep"></div>
+    <button class="ae-tb-btn" data-cmd="bold" title="Fett (Ctrl+B)"><b>B</b></button>
+    <button class="ae-tb-btn" data-cmd="italic" title="Kursiv (Ctrl+I)"><i>I</i></button>
+    <button class="ae-tb-btn" data-cmd="underline" title="Unterstrichen (Ctrl+U)" style="text-decoration:underline">U</button>
+    <div class="toolbar-sep"></div>
+    <button class="ae-tb-btn" data-cmd="insertUnorderedList" title="Aufzählung">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="5" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="5" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+    </button>
+    <button class="ae-tb-btn" data-cmd="insertOrderedList" title="Nummerierte Liste">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+    </button>
+    <button class="ae-tb-btn" id="tb-blockquote" title="Zitat">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+    </button>
+    <div class="toolbar-sep"></div>
+    <button class="ae-tb-btn" id="tb-image" title="Bild einfügen">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    </button>
+    <button class="ae-tb-btn" id="tb-link" title="Link einfügen">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    </button>
+    <div class="toolbar-sep"></div>
+    <button class="ae-tb-btn" data-cmd="removeFormat" title="Formatierung entfernen">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16M5 20l14-16"/></svg>
+    </button>
+  </div>
+
+  <!-- Document page -->
+  <div class="ae-document-area">
+    <div class="ae-document-page">
+      <!-- Meta fields row -->
+      <div class="ae-meta-section">
+        <div class="ae-meta-field">
+          <label>Autor</label>
+          <input class="ae-meta-input" id="ae-author" placeholder="Autorenname" />
+        </div>
+        <div class="ae-meta-field">
+          <label>Kategorie</label>
+          <select class="ae-meta-select" id="ae-category">
+            <option value="nachrichten">Nachrichten</option>
+            <option value="politik">Politik</option>
+            <option value="wirtschaft">Wirtschaft</option>
+            <option value="sport">Sport</option>
+            <option value="kultur">Kultur</option>
+            <option value="wissenschaft">Wissenschaft</option>
+            <option value="meinung">Meinung</option>
+            <option value="unterhaltung">Unterhaltung</option>
+          </select>
+        </div>
+        <div class="ae-meta-field">
+          <label>Layout-Größe</label>
+          <select class="ae-meta-select" id="ae-size">
+            <option value="full">Volle Breite</option>
+            <option value="half">Halbe Breite</option>
+            <option value="third">Drittel</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <textarea class="ae-headline-input" id="ae-headline" placeholder="Überschrift eingeben…" rows="1"></textarea>
+
+      <!-- Subtitle -->
+      <textarea class="ae-subtitle-input" id="ae-subtitle" placeholder="Untertitel (optional)…" rows="1"></textarea>
+
+      <!-- Image zone -->
+      <div class="ae-image-zone" id="ae-image-zone">
+        <div class="ae-image-preview hidden" id="ae-image-preview">
+          <img id="ae-image-el" src="" alt="" />
+          <div class="ae-image-overlay">
+            <button class="btn btn-outline btn-sm" style="background:rgba(255,255,255,0.9)" id="ae-image-change">Ändern</button>
+            <button class="btn btn-sm" style="background:rgba(200,50,50,0.85);color:#fff" id="ae-image-remove">Entfernen</button>
+          </div>
+          <input class="ae-image-caption" id="ae-image-caption" placeholder="Bildunterschrift…" />
+        </div>
+        <button class="ae-image-upload-btn hidden" id="ae-image-upload-btn">
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style="font-size:13px">Bild hochladen</span>
+        </button>
+      </div>
+      <input type="file" id="ae-file-input" accept="image/*" style="display:none" />
+
+      <!-- Content area -->
+      <div class="ae-content-area" id="ae-content" contenteditable="true" data-placeholder="Schreibe deinen Artikel hier…"></div>
+
+      <p class="ae-tip">💡 Tipp: Nutze die Toolbar oben zum Formatieren. Mit dem 🖼-Button kannst du Bilder einfügen.</p>
+      <div class="ae-word-count"><span id="ae-word-count">0 Wörter</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLIC VIEW -->
+<main id="page-public" class="page hidden">
+  <div id="public-content"></div>
+</main>
+
+<!-- MODAL: Create Newspaper -->
+<div class="modal-overlay hidden" id="modal-create-np">
+  <div class="modal fade-in">
+    <h3>Neue Zeitungsausgabe</h3>
+    <div class="field">
+      <label>Titel der Zeitung</label>
+      <input id="create-np-title" placeholder="Titel eingeben…" />
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="create-np-cancel">Abbrechen</button>
+      <button class="btn btn-primary" id="create-np-confirm">Erstellen</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Share -->
+<div class="modal-overlay hidden" id="modal-share">
+  <div class="modal fade-in">
+    <h3>Link teilen</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Kopiere diesen Link, um deine Zeitung zu teilen</p>
+    <div class="share-url-box">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      <input id="share-url-input" readonly />
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="share-close">Schließen</button>
+      <button class="btn btn-primary" id="share-copy">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Link kopieren
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Delete confirm -->
+<div class="modal-overlay hidden" id="modal-delete">
+  <div class="modal fade-in">
+    <h3>Artikel löschen?</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:4px">Dieser Artikel wird unwiderruflich gelöscht.</p>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="delete-cancel">Abbrechen</button>
+      <button class="btn btn-danger" id="delete-confirm" style="background:var(--danger);color:#fff;border-color:var(--danger)">Löschen</button>
+    </div>
+  </div>
+</div>
+
 <script>
-// ─── TOAST NOTIFICATIONS ───
+// ═══════════════════════════════════════════════════════
+//  STATE & ORIGINAL LOGIC BACKEND
+// ═══════════════════════════════════════════════════════
+const state = {
+  page: 'dashboard',
+  newspapers: [],
+  articles: [],
+  currentNpId: null,
+  editingArticle: null,
+  deleteTarget: null,
+  deleteType: null,
+};
+
+let db = {
+  n: []
+};
+
+// ─── TOAST helper ───
 function showToast(text, isError = false) {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
@@ -240,7 +583,9 @@ function showToast(text, isError = false) {
   setTimeout(() => toast.remove(), 3000);
 }
 
-// ─── AUTHENTICATION LOGIC ───
+// ═══════════════════════════════════════════════════════
+//  ADD ON: AUTHENTICATION FLOW
+// ═══════════════════════════════════════════════════════
 const viewLogin = document.getElementById('auth-login');
 const viewRegister = document.getElementById('auth-register');
 const viewForgot = document.getElementById('auth-forgot');
@@ -265,43 +610,38 @@ document.getElementById('back-to-login-forgot').addEventListener('click', () => 
   viewLogin.classList.remove('hidden');
 });
 
-// SUBMIT: REGISTER
+// Register submission
 document.getElementById('submit-register').addEventListener('click', () => {
   const email = document.getElementById('reg-email').value;
   const pass = document.getElementById('reg-pass').value;
-
   if(!email || !pass) {
     showToast('Bitte füllen Sie alle Felder aus.', true);
     return;
   }
-
-  // Save to LocalStorage
   localStorage.setItem(`user_${email}`, pass);
   showToast('Konto erfolgreich erstellt! Bitte loggen Sie sich ein.');
   viewRegister.classList.add('hidden');
   viewLogin.classList.remove('hidden');
 });
 
-// SUBMIT: LOGIN
+// Login submission -> unlocks your program view
 document.getElementById('submit-login').addEventListener('click', () => {
   const email = document.getElementById('login-email').value;
   const pass = document.getElementById('login-pass').value;
-
   const storedPass = localStorage.getItem(`user_${email}`);
 
   if (storedPass && storedPass === pass) {
     showToast('Erfolgreich eingeloggt!');
-    // Hide auth screens
     viewLogin.classList.add('hidden');
-    // Show Main app content
     mainNav.classList.remove('hidden');
     pageDashboard.classList.remove('hidden');
+    // Aquí el estado original arranca
   } else {
     showToast('Ungültige E-Mail-Adresse oder Passwort.', true);
   }
 });
 
-// SUBMIT: FORGOT PASSWORD
+// Forgot Password simulation
 document.getElementById('submit-forgot').addEventListener('click', () => {
   const email = document.getElementById('forgot-email').value;
   if(!email) {
@@ -313,10 +653,12 @@ document.getElementById('submit-forgot').addEventListener('click', () => {
   viewLogin.classList.remove('hidden');
 });
 
-// LOGOUT
+// Logout handles re-locking everything
 document.getElementById('btn-logout').addEventListener('click', () => {
   mainNav.classList.add('hidden');
   pageDashboard.classList.add('hidden');
+  document.getElementById('page-editor').classList.add('hidden');
+  document.getElementById('page-article-editor').classList.add('hidden');
   viewLogin.classList.remove('hidden');
   showToast('Erfolgreich abgemeldet.');
 });
