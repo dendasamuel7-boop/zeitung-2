@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Zeitung</title>
+<title>Presse Editor</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -58,18 +58,6 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 #nav .nav-title{font-family:var(--font-heading);font-size:16px;font-weight:700;cursor:pointer;padding:4px 8px;border-radius:var(--radius);transition:background 0.15s}
 #nav .nav-title:hover{background:#f0ece2}
 #nav .nav-title-input{font-family:var(--font-heading);font-size:16px;font-weight:700;border:1px solid var(--border2);border-radius:var(--radius);padding:4px 8px;background:#fff;outline:none;width:200px}
-
-/* ─── AUTHENTICATION STYLES ─── */
-.auth-container{max-width:400px;margin:80px auto;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 10px 30px rgba(0,0,0,0.05)}
-.auth-container h2{font-size:26px;margin-bottom:8px;text-align:center}
-.auth-container p{color:var(--muted);font-size:14px;text-align:center;margin-bottom:24px}
-.auth-container .field{margin-bottom:16px}
-.auth-container .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
-.auth-container .field input{width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius);outline:none;font-size:14px;background:#fff}
-.auth-container .field input:focus{border-color:var(--fg)}
-.auth-footer-links{display:flex;justify-content:space-between;margin-top:16px;font-size:13px}
-.auth-footer-links a{color:var(--accent);text-decoration:none;cursor:pointer}
-.auth-footer-links a:hover{text-decoration:underline}
 
 /* ─── MAIN ─── */
 .page{max-width:1100px;margin:0 auto;padding:40px 24px}
@@ -260,13 +248,13 @@ svg.icon-lg{width:20px;height:20px}
 <div id="toast-container"></div>
 
 <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
-<header id="nav" class="hidden">
+<header id="nav">
   <div class="nav-inner">
     <div class="logo" id="logo-btn" style="cursor:pointer">
       <div class="logo-icon">
         <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8M4 18h6"/></svg>
       </div>
-      <span id="nav-logo-text">Zeitung</span>
+      <span id="nav-logo-text">Presse Editor</span>
     </div>
     <div class="spacer"></div>
     <div id="nav-editor-controls" class="hidden" style="display:none;align-items:center;gap:8px">
@@ -278,7 +266,7 @@ svg.icon-lg{width:20px;height:20px}
         Teilen
       </button>
       <button class="btn btn-outline btn-sm hidden" id="btn-preview">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M1xl 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         Ansehen
       </button>
       <button class="btn btn-primary btn-sm" id="btn-publish">
@@ -296,60 +284,6 @@ svg.icon-lg{width:20px;height:20px}
     </button>
   </div>
 </header>
-
-<!-- ═══════════════════════════════ SESSIONS SCREEN ═══════════════════════════════ -->
-<!-- LOGIN -->
-<div id="auth-login" class="auth-container fade-in">
-  <h2>Anmelden bei Zeitung</h2>
-  <p>Geben Sie Ihre Daten ein, um fortzufahren</p>
-  <div class="field">
-    <label>E-Mail-Adresse</label>
-    <input type="email" id="login-email" placeholder="name@beispiel.de">
-  </div>
-  <div class="field">
-    <label>Passwort</label>
-    <input type="password" id="login-pass" placeholder="••••••••">
-  </div>
-  <button class="btn btn-primary" id="submit-login" style="width:100%; justify-content:center; margin-top:8px;">Einloggen</button>
-  <div class="auth-footer-links">
-    <a id="go-to-forgot">Password vergessen?</a>
-    <a id="go-to-register">Registrieren</a>
-  </div>
-</div>
-
-<!-- REGISTER -->
-<div id="auth-register" class="auth-container fade-in hidden">
-  <h2>Konto erstellen</h2>
-  <p>Erstellen Sie ein Konto für Zeitung</p>
-  <div class="field">
-    <label>E-Mail-Adresse</label>
-    <input type="email" id="reg-email" placeholder="name@beispiel.de">
-  </div>
-  <div class="field">
-    <label>Passwort erstellen</label>
-    <input type="password" id="reg-pass" placeholder="••••••••">
-  </div>
-  <button class="btn btn-primary" id="submit-register" style="width:100%; justify-content:center; margin-top:8px;">Konto erstellen</button>
-  <div class="auth-footer-links">
-    <span></span>
-    <a id="back-to-login-reg">Zurück zum Login</a>
-  </div>
-</div>
-
-<!-- FORGOT PASSWORD -->
-<div id="auth-forgot" class="auth-container fade-in hidden">
-  <h2>Passwort vergessen</h2>
-  <p>Wir senden Ihnen Anweisungen zum Zurücksetzen</p>
-  <div class="field">
-    <label>E-Mail-Adresse</label>
-    <input type="email" id="forgot-email" placeholder="name@beispiel.de">
-  </div>
-  <button class="btn btn-primary" id="submit-forgot" style="width:100%; justify-content:center; margin-top:8px;">Zurücksetzen</button>
-  <div class="auth-footer-links">
-    <span></span>
-    <a id="back-to-login-forgot">Zurück zum Login</a>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════ PAGES ═══════════════════════════════ -->
 
@@ -495,7 +429,7 @@ svg.icon-lg{width:20px;height:20px}
       </div>
       <input type="file" id="ae-file-input" accept="image/*" style="display:none" />
 
-      <!-- Content area -->
+      <!-- Content area — no Quill, pure contenteditable for clean look -->
       <div class="ae-content-area" id="ae-content" contenteditable="true" data-placeholder="Schreibe deinen Artikel hier…"></div>
 
       <p class="ae-tip">💡 Tipp: Nutze die Toolbar oben zum Formatieren. Mit dem 🖼-Button kannst du Bilder einfügen.</p>
@@ -557,7 +491,7 @@ svg.icon-lg{width:20px;height:20px}
 
 <script>
 // ═══════════════════════════════════════════════════════
-//  STATE & ORIGINAL LOGIC BACKEND
+//  STATE
 // ═══════════════════════════════════════════════════════
 const state = {
   page: 'dashboard',
@@ -569,99 +503,539 @@ const state = {
   deleteType: null,
 };
 
+// ─── Local data (simulates base44 backend) ───
 let db = {
-  n: []
+  newspapers: JSON.parse(localStorage.getItem('pe_newspapers') || '[]'),
+  articles: JSON.parse(localStorage.getItem('pe_articles') || '[]'),
 };
+function save() {
+  localStorage.setItem('pe_newspapers', JSON.stringify(db.newspapers));
+  localStorage.setItem('pe_articles', JSON.stringify(db.articles));
+}
+function uid() { return Math.random().toString(36).slice(2,10); }
 
-// ─── TOAST helper ───
-function showToast(text, isError = false) {
-  const container = document.getElementById('toast-container');
-  const toast = document.createElement('div');
-  toast.className = `toast ${isError ? 'error' : ''}`;
-  toast.innerText = text;
-  container.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
+// ─── Category labels ───
+const CAT_LABELS = {
+  nachrichten:'Nachrichten', politik:'Politik', wirtschaft:'Wirtschaft',
+  sport:'Sport', kultur:'Kultur', wissenschaft:'Wissenschaft',
+  meinung:'Meinung', unterhaltung:'Unterhaltung'
+};
+const SIZE_LABELS = { full:'Volle Breite', half:'Halbe Breite', third:'Drittel' };
+
+// ═══════════════════════════════════════════════════════
+//  NAV
+// ═══════════════════════════════════════════════════════
+const $ = (id) => document.getElementById(id);
+
+function showPage(name) {
+  ['dashboard','editor','article-editor','public'].forEach(p => {
+    const el = $('page-' + p.replace('-','_')) || $('page-' + p);
+    if (el) el.classList.add('hidden');
+  });
+  const target = $('page-' + name) || $('page-article-editor');
+  if (target) { target.classList.remove('hidden'); target.style.display = ''; }
+  $('nav-editor-controls').style.display = name === 'editor' ? 'flex' : 'none';
+  $('nav-editor-controls').classList.toggle('hidden', name !== 'editor');
+  $('nav-logo-text').textContent = 'Presse Editor';
+  state.page = name;
+}
+
+$('logo-btn').onclick = () => { showPage('dashboard'); renderDashboard(); };
+$('btn-logout').onclick = () => toast('Abgemeldet (Demo)');
+
+// ═══════════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════════
+function toast(msg, type='') {
+  const el = document.createElement('div');
+  el.className = 'toast' + (type ? ' '+type : '');
+  el.textContent = msg;
+  $('toast-container').prepend(el);
+  setTimeout(() => el.remove(), 3000);
 }
 
 // ═══════════════════════════════════════════════════════
-//  ADD ON: AUTHENTICATION FLOW
+//  DASHBOARD
 // ═══════════════════════════════════════════════════════
-const viewLogin = document.getElementById('auth-login');
-const viewRegister = document.getElementById('auth-register');
-const viewForgot = document.getElementById('auth-forgot');
-const mainNav = document.getElementById('nav');
-const pageDashboard = document.getElementById('page-dashboard');
-
-// Navigation between Auth screens
-document.getElementById('go-to-register').addEventListener('click', () => {
-  viewLogin.classList.add('hidden');
-  viewRegister.classList.remove('hidden');
-});
-document.getElementById('go-to-forgot').addEventListener('click', () => {
-  viewLogin.classList.add('hidden');
-  viewForgot.classList.remove('hidden');
-});
-document.getElementById('back-to-login-reg').addEventListener('click', () => {
-  viewRegister.classList.add('hidden');
-  viewLogin.classList.remove('hidden');
-});
-document.getElementById('back-to-login-forgot').addEventListener('click', () => {
-  viewForgot.classList.add('hidden');
-  viewLogin.classList.remove('hidden');
-});
-
-// Register submission
-document.getElementById('submit-register').addEventListener('click', () => {
-  const email = document.getElementById('reg-email').value;
-  const pass = document.getElementById('reg-pass').value;
-  if(!email || !pass) {
-    showToast('Bitte füllen Sie alle Felder aus.', true);
+function renderDashboard() {
+  showPage('dashboard');
+  const list = $('newspaper-list');
+  if (db.newspapers.length === 0) {
+    list.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">📰</div>
+      <h3>Noch keine Zeitungen</h3>
+      <p>Erstelle deine erste Zeitungsausgabe</p>
+      <button class="btn btn-primary" onclick="openCreateNp()">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        Erste Ausgabe erstellen
+      </button>
+    </div>`;
     return;
   }
-  localStorage.setItem(`user_${email}`, pass);
-  showToast('Konto erfolgreich erstellt! Bitte loggen Sie sich ein.');
-  viewRegister.classList.add('hidden');
-  viewLogin.classList.remove('hidden');
-});
+  list.innerHTML = '<div class="newspaper-grid">' + db.newspapers.map(np => `
+    <div class="np-card">
+      <div class="np-card-cover">
+        ${np.cover_image ? `<img src="${np.cover_image}" alt="" />` : `<div class="np-card-initials">${(np.title||'').slice(0,2).toUpperCase()}</div>`}
+        ${np.published ? '<span class="badge badge-green np-card-published-badge"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg> Veröffentlicht</span>' : ''}
+      </div>
+      <div class="np-card-body">
+        <h3>${esc(np.title)}</h3>
+        ${np.edition_date ? `<p class="np-date"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${fmtDate(np.edition_date)}</p>` : '<p class="np-date" style="height:18px"></p>'}
+        <div class="np-card-actions">
+          <button class="btn btn-primary btn-sm" onclick="openEditor('${np.id}')">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Bearbeiten
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="deleteNp('${np.id}')" title="Löschen" style="padding:5px 10px">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>`).join('') + '</div>';
+}
 
-// Login submission -> unlocks your program view
-document.getElementById('submit-login').addEventListener('click', () => {
-  const email = document.getElementById('login-email').value;
-  const pass = document.getElementById('login-pass').value;
-  const storedPass = localStorage.getItem(`user_${email}`);
+function openCreateNp() { $('modal-create-np').classList.remove('hidden'); $('create-np-title').focus(); }
+$('btn-create-newspaper').onclick = openCreateNp;
+$('create-np-cancel').onclick = () => $('modal-create-np').classList.add('hidden');
+$('create-np-confirm').onclick = () => {
+  const t = $('create-np-title').value.trim();
+  if (!t) return;
+  const np = { id: uid(), title: t, edition_date: new Date().toISOString().slice(0,10), published: false, publish_id: uid() };
+  db.newspapers.unshift(np); save();
+  $('modal-create-np').classList.add('hidden');
+  $('create-np-title').value = '';
+  toast('Zeitung erstellt!');
+  renderDashboard();
+};
+$('create-np-title').addEventListener('keydown', e => { if(e.key==='Enter') $('create-np-confirm').click(); });
 
-  if (storedPass && storedPass === pass) {
-    showToast('Erfolgreich eingeloggt!');
-    viewLogin.classList.add('hidden');
-    mainNav.classList.remove('hidden');
-    pageDashboard.classList.remove('hidden');
-    // Aquí el estado original arranca
+function deleteNp(id) {
+  if (!confirm('Zeitung löschen?')) return;
+  db.newspapers = db.newspapers.filter(n => n.id !== id);
+  db.articles = db.articles.filter(a => a.newspaper_id !== id);
+  save(); toast('Gelöscht'); renderDashboard();
+}
+
+// ═══════════════════════════════════════════════════════
+//  EDITOR
+// ═══════════════════════════════════════════════════════
+function openEditor(npId) {
+  state.currentNpId = npId;
+  const np = db.newspapers.find(n => n.id === npId);
+  if (!np) return;
+  showPage('editor');
+  // Setup nav
+  $('nav-title-display').textContent = np.title;
+  $('nav-editor-controls').style.display = 'flex';
+  $('nav-editor-controls').classList.remove('hidden');
+  updatePublishBtn(np);
+  $('btn-share').classList.toggle('hidden', !np.published);
+  renderArticleList();
+  renderCanvas();
+}
+
+function updatePublishBtn(np) {
+  const icon = np.published
+    ? `<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
+    : `<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 117-7m-7 7v-7M17 8l-5-5-5 5M12 3v10"/></svg>`;
+  $('publish-label').innerHTML = icon + ' ' + (np.published ? 'Entfernen' : 'Veröffentlichen');
+  $('btn-share').classList.toggle('hidden', !np.published);
+  $('btn-preview').classList.toggle('hidden', !np.published);
+}
+
+$('nav-title-display').onclick = function() {
+  $('nav-title-display').classList.add('hidden');
+  $('nav-title-edit').classList.remove('hidden');
+  $('nav-title-input').value = $('nav-title-display').textContent;
+  $('nav-title-input').focus();
+};
+$('nav-title-input').addEventListener('blur', saveTitle);
+$('nav-title-input').addEventListener('keydown', e => { if(e.key==='Enter') saveTitle(); });
+function saveTitle() {
+  const np = db.newspapers.find(n => n.id === state.currentNpId);
+  if (!np) return;
+  np.title = $('nav-title-input').value.trim() || np.title;
+  save();
+  $('nav-title-display').textContent = np.title;
+  $('nav-title-display').classList.remove('hidden');
+  $('nav-title-edit').classList.add('hidden');
+}
+
+$('btn-publish').onclick = () => {
+  const np = db.newspapers.find(n => n.id === state.currentNpId);
+  if (!np) return;
+  np.published = !np.published;
+  save(); updatePublishBtn(np);
+  toast(np.published ? 'Zeitung veröffentlicht!' : 'Veröffentlichung aufgehoben');
+};
+$('btn-share').onclick = () => {
+  const np = db.newspapers.find(n => n.id === state.currentNpId);
+  if (!np) return;
+  $('share-url-input').value = location.origin + location.pathname + '?view=' + np.publish_id;
+  $('modal-share').classList.remove('hidden');
+};
+$('btn-preview').onclick = () => {
+  const np = db.newspapers.find(n => n.id === state.currentNpId);
+  if (np) openPublicView(np.publish_id);
+};
+$('share-close').onclick = () => $('modal-share').classList.add('hidden');
+$('share-copy').onclick = () => {
+  navigator.clipboard.writeText($('share-url-input').value).catch(()=>{});
+  toast('✓ Link kopiert!');
+};
+$('btn-new-article').onclick = () => openArticleEditor(null);
+$('sidebar-new-article').onclick = () => openArticleEditor(null);
+
+function renderArticleList() {
+  const articles = db.articles.filter(a => a.newspaper_id === state.currentNpId).sort((a,b) => a.order_index - b.order_index);
+  const el = $('article-list');
+  if (articles.length === 0) {
+    el.innerHTML = `<div class="empty-state" style="padding:40px 10px">
+      <div class="empty-icon" style="width:48px;height:48px;font-size:20px">📄</div>
+      <h3 style="font-size:16px">Keine Artikel</h3>
+      <p>Füge deinen ersten Artikel hinzu</p>
+    </div>`; return;
+  }
+  el.innerHTML = articles.map(a => `
+    <div class="article-item">
+      <div class="article-thumb">
+        ${a.image_url ? `<img src="${a.image_url}" alt="" />` : `<svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`}
+      </div>
+      <div class="article-info" onclick="openArticleEditor('${a.id}')" style="cursor:pointer">
+        <h4>${esc(a.headline) || '(kein Titel)'}</h4>
+        ${a.subtitle ? `<p>${esc(a.subtitle)}</p>` : ''}
+        <div class="badges">
+          <span class="badge">${CAT_LABELS[a.category] || a.category || ''}</span>
+          <span class="badge">${SIZE_LABELS[a.layout_size] || ''}</span>
+          ${a.author ? `<span style="font-size:11px;color:var(--muted)">von ${esc(a.author)}</span>` : ''}
+        </div>
+      </div>
+      <div class="article-actions">
+        <button onclick="openArticleEditor('${a.id}')" title="Bearbeiten"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="del-btn" onclick="confirmDeleteArticle('${a.id}')" title="Löschen"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderCanvas() {
+  const np = db.newspapers.find(n => n.id === state.currentNpId);
+  const articles = db.articles.filter(a => a.newspaper_id === state.currentNpId).sort((a,b) => a.order_index - b.order_index);
+  const full = articles.filter(a => a.layout_size === 'full');
+  const half = articles.filter(a => a.layout_size === 'half');
+  const third = articles.filter(a => a.layout_size === 'third');
+  const canvas = $('newspaper-canvas');
+  canvas.innerHTML = `<div class="newspaper-canvas">
+    <div class="np-header-area">
+      ${np.edition_date ? `<p class="np-edition-date">${fmtDateLong(np.edition_date)}</p>` : ''}
+      <h1>${esc(np.title)}</h1>
+      ${np.subtitle ? `<p class="np-subtitle">${esc(np.subtitle)}</p>` : ''}
+      <hr class="np-rule" />
+    </div>
+    ${articles.length === 0 ? `<div class="empty-state"><div class="empty-icon">📝</div><h3>Noch keine Artikel</h3><p>Fang jetzt an!</p><button class="btn btn-primary" onclick="openArticleEditor(null)"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Ersten Artikel erstellen</button></div>` : `
+    <div class="canvas-articles">
+      ${full.map((a,i) => articleBlock(a) + (i < full.length-1 ? '<hr style="border:none;border-top:1px solid var(--border);margin-top:0">' : '')).join('')}
+      ${half.length ? `<div class="half-grid">${half.map(a => articleBlock(a)).join('')}</div>` : ''}
+      ${third.length ? `<div class="third-grid">${third.map(a => articleBlock(a)).join('')}</div>` : ''}
+      <div class="add-article-row">
+        <button class="btn btn-outline" onclick="openArticleEditor(null)" style="border-style:dashed">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Artikel hinzufügen
+        </button>
+      </div>
+    </div>`}
+  </div>`;
+}
+
+function articleBlock(a) {
+  const hSize = a.layout_size === 'full' ? '32px' : a.layout_size === 'half' ? '22px' : '18px';
+  const imgH = a.layout_size === 'full' ? '220px' : '140px';
+  return `<div class="canvas-article-block" onclick="openArticleEditor('${a.id}')">
+    <div class="block-actions">
+      <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();openArticleEditor('${a.id}')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Bearbeiten
+      </button>
+      <button class="btn btn-sm" style="background:#fde8e6;color:var(--danger)" onclick="event.stopPropagation();confirmDeleteArticle('${a.id}')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+      </button>
+    </div>
+    ${a.category ? `<p class="cat-label">${CAT_LABELS[a.category] || a.category}</p>` : ''}
+    <h2 style="font-size:${hSize}">${esc(a.headline || '(kein Titel)')}</h2>
+    ${a.subtitle ? `<p class="art-subtitle">${esc(a.subtitle)}</p>` : ''}
+    ${a.author ? `<p class="art-author">Von ${esc(a.author)}</p>` : ''}
+    ${a.image_url ? `<img src="${a.image_url}" style="height:${imgH}" alt="" />` : ''}
+    ${a.image_caption ? `<p style="font-size:11px;font-style:italic;color:var(--muted);margin-bottom:8px">${esc(a.image_caption)}</p>` : ''}
+    ${a.content ? `<div class="art-body">${a.content}</div>` : ''}
+  </div>`;
+}
+
+// ─── Delete article ───
+function confirmDeleteArticle(id) {
+  state.deleteTarget = id; state.deleteType = 'article';
+  $('modal-delete').classList.remove('hidden');
+}
+$('delete-cancel').onclick = () => $('modal-delete').classList.add('hidden');
+$('delete-confirm').onclick = () => {
+  if (state.deleteType === 'article') {
+    db.articles = db.articles.filter(a => a.id !== state.deleteTarget);
+    save(); toast('Artikel gelöscht');
+    $('modal-delete').classList.add('hidden');
+    renderArticleList(); renderCanvas();
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+//  ARTICLE EDITOR (WORD-STYLE)
+// ═══════════════════════════════════════════════════════
+let aeArticleId = null;
+
+function openArticleEditor(articleId) {
+  aeArticleId = articleId;
+  const ae = $('page-article-editor');
+  ae.classList.remove('hidden');
+  ae.style.display = '';
+  $('page-editor').classList.add('hidden');
+  $('nav-editor-controls').style.display = 'none';
+
+  // Hide image zone by default, show upload button
+  $('ae-image-preview').classList.add('hidden');
+  $('ae-image-upload-btn').classList.remove('hidden');
+
+  if (articleId) {
+    const a = db.articles.find(x => x.id === articleId);
+    if (!a) return;
+    $('ae-author').value = a.author || '';
+    $('ae-category').value = a.category || 'nachrichten';
+    $('ae-size').value = a.layout_size || 'full';
+    autoResize($('ae-headline'), a.headline || '');
+    autoResize($('ae-subtitle'), a.subtitle || '');
+    $('ae-content').innerHTML = a.content || '';
+    if (a.image_url) {
+      $('ae-image-el').src = a.image_url;
+      $('ae-image-caption').value = a.image_caption || '';
+      $('ae-image-preview').classList.remove('hidden');
+      $('ae-image-upload-btn').classList.add('hidden');
+    }
   } else {
-    showToast('Ungültige E-Mail-Adresse oder Passwort.', true);
+    $('ae-author').value = '';
+    $('ae-category').value = 'nachrichten';
+    $('ae-size').value = 'full';
+    autoResize($('ae-headline'), '');
+    autoResize($('ae-subtitle'), '');
+    $('ae-content').innerHTML = '';
+    $('ae-image-el').src = '';
+    $('ae-image-caption').value = '';
   }
+  updateWordCount();
+  $('ae-headline').focus();
+  // scroll to top
+  window.scrollTo(0,0);
+}
+
+function autoResize(el, val) {
+  el.value = val;
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+['ae-headline','ae-subtitle'].forEach(id => {
+  $(id).addEventListener('input', function(){ this.style.height='auto'; this.style.height=this.scrollHeight+'px'; });
 });
 
-// Forgot Password simulation
-document.getElementById('submit-forgot').addEventListener('click', () => {
-  const email = document.getElementById('forgot-email').value;
-  if(!email) {
-    showToast('Bitte geben Sie Ihre E-Mail-Adresse ein.', true);
-    return;
-  }
-  showToast('Link zum Zurücksetzen des Passworts wurde gesendet!');
-  viewForgot.classList.add('hidden');
-  viewLogin.classList.remove('hidden');
+$('ae-content').addEventListener('input', updateWordCount);
+function updateWordCount() {
+  const txt = ($('ae-content').innerText || '').trim();
+  const words = txt ? txt.split(/\s+/).length : 0;
+  $('ae-word-count').textContent = words + ' Wörter';
+}
+
+$('ae-close').onclick = () => {
+  $('page-article-editor').classList.add('hidden');
+  openEditor(state.currentNpId);
+};
+
+$('ae-save').onclick = saveArticle;
+function saveArticle() {
+  const headline = $('ae-headline').value.trim();
+  if (!headline) { toast('Bitte Überschrift eingeben', 'error'); return; }
+  $('ae-save-label').textContent = 'Speichern…';
+  $('ae-save').disabled = true;
+  const data = {
+    newspaper_id: state.currentNpId,
+    headline,
+    subtitle: $('ae-subtitle').value.trim(),
+    author: $('ae-author').value.trim(),
+    category: $('ae-category').value,
+    layout_size: $('ae-size').value,
+    content: $('ae-content').innerHTML,
+    image_url: $('ae-image-el').src && $('ae-image-el').src !== location.href ? $('ae-image-el').src : '',
+    image_caption: $('ae-image-caption').value.trim(),
+  };
+  setTimeout(() => {
+    if (aeArticleId) {
+      const a = db.articles.find(x => x.id === aeArticleId);
+      if (a) Object.assign(a, data);
+    } else {
+      data.id = uid();
+      data.order_index = db.articles.filter(a => a.newspaper_id === state.currentNpId).length;
+      db.articles.push(data);
+    }
+    save();
+    $('ae-save-label').textContent = 'Gespeichert ✓';
+    $('ae-save').disabled = false;
+    setTimeout(() => { $('ae-save-label').textContent = 'Speichern'; }, 1500);
+    toast(aeArticleId ? 'Artikel aktualisiert!' : 'Artikel gespeichert!');
+    renderArticleList(); renderCanvas();
+  }, 300);
+}
+
+// ─── Toolbar ───
+document.querySelectorAll('[data-cmd]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.execCommand(btn.dataset.cmd, false, null);
+    $('ae-content').focus();
+  });
 });
 
-// Logout handles re-locking everything
-document.getElementById('btn-logout').addEventListener('click', () => {
-  mainNav.classList.add('hidden');
-  pageDashboard.classList.add('hidden');
-  document.getElementById('page-editor').classList.add('hidden');
-  document.getElementById('page-article-editor').classList.add('hidden');
-  viewLogin.classList.remove('hidden');
-  showToast('Erfolgreich abgemeldet.');
-});
+$('tb-blockquote').onclick = () => {
+  const sel = window.getSelection();
+  if (sel && sel.rangeCount) {
+    const range = sel.getRangeAt(0);
+    const bq = document.createElement('blockquote');
+    try { range.surroundContents(bq); } catch(e) { document.execCommand('formatBlock', false, 'blockquote'); }
+  } else { document.execCommand('formatBlock', false, 'blockquote'); }
+  $('ae-content').focus();
+};
+
+$('tb-format').onchange = function() {
+  if (this.value === 'p') document.execCommand('formatBlock', false, 'p');
+  else document.execCommand('formatBlock', false, this.value);
+  $('ae-content').focus();
+};
+
+$('tb-link').onclick = () => {
+  const url = prompt('URL eingeben:');
+  if (url) { document.execCommand('createLink', false, url); }
+  $('ae-content').focus();
+};
+
+// ─── Image upload (reads as data URL for demo) ───
+$('ae-image-upload-btn').onclick = () => $('ae-file-input').click();
+$('ae-image-change').onclick = () => $('ae-file-input').click();
+$('ae-image-remove').onclick = () => {
+  $('ae-image-el').src = '';
+  $('ae-image-preview').classList.add('hidden');
+  $('ae-image-upload-btn').classList.remove('hidden');
+};
+$('tb-image').onclick = () => $('ae-file-input').click();
+
+$('ae-file-input').onchange = function(e) {
+  const file = e.target.files[0]; if (!file) return;
+  $('ae-upload-status').classList.remove('hidden');
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const url = ev.target.result;
+    // If triggered from toolbar, insert into content
+    if (document.activeElement === $('ae-content') || this._fromToolbar) {
+      document.execCommand('insertImage', false, url);
+    } else {
+      $('ae-image-el').src = url;
+      $('ae-image-preview').classList.remove('hidden');
+      $('ae-image-upload-btn').classList.add('hidden');
+    }
+    $('ae-upload-status').classList.add('hidden');
+  };
+  reader.readAsDataURL(file);
+  this.value = '';
+};
+
+// Track toolbar image vs article image
+$('tb-image').onclick = () => {
+  $('ae-file-input')._fromToolbar = true;
+  $('ae-file-input').click();
+};
+$('ae-image-upload-btn').onclick = () => { $('ae-file-input')._fromToolbar = false; $('ae-file-input').click(); };
+$('ae-image-change').onclick = () => { $('ae-file-input')._fromToolbar = false; $('ae-file-input').click(); };
+
+// Toolbar state update
+$('ae-content').addEventListener('keyup', updateToolbarState);
+$('ae-content').addEventListener('mouseup', updateToolbarState);
+function updateToolbarState() {
+  ['bold','italic','underline'].forEach(cmd => {
+    const btn = document.querySelector(`[data-cmd="${cmd}"]`);
+    if (btn) btn.classList.toggle('active', document.queryCommandState(cmd));
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  PUBLIC VIEW
+// ═══════════════════════════════════════════════════════
+function openPublicView(publishId) {
+  const np = db.newspapers.find(n => n.publish_id === publishId && n.published);
+  if (!np) { toast('Zeitung nicht verfügbar', 'error'); return; }
+  const articles = db.articles.filter(a => a.newspaper_id === np.id).sort((a,b) => a.order_index - b.order_index);
+  const full = articles.filter(a => a.layout_size === 'full');
+  const half = articles.filter(a => a.layout_size === 'half');
+  const third = articles.filter(a => a.layout_size === 'third');
+
+  $('public-content').innerHTML = `
+    <div class="pv-header">
+      ${np.edition_date ? `<p class="pv-date">${fmtDateLong(np.edition_date)}</p>` : ''}
+      <h1 class="pv-title">${esc(np.title)}</h1>
+      ${np.subtitle ? `<p class="pv-subtitle">${esc(np.subtitle)}</p>` : ''}
+      <hr class="pv-rule" />
+    </div>
+    <div>
+      ${full.map((a,i) => publicArticle(a,'full') + (i<full.length-1 ? '<hr class="art-sep">' : '')).join('')}
+      ${half.length ? `<div class="half-grid" style="margin-top:32px;padding-top:32px;border-top:1px solid var(--border)">${half.map(a=>publicArticle(a,'half')).join('')}</div>` : ''}
+      ${third.length ? `<div class="third-grid" style="margin-top:32px;padding-top:32px;border-top:1px solid var(--border)">${third.map(a=>publicArticle(a,'third')).join('')}</div>` : ''}
+    </div>`;
+
+  showPage('public');
+  $('nav-editor-controls').style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+function publicArticle(a, size) {
+  const hSize = size==='full' ? '38px' : size==='half' ? '24px' : '20px';
+  const imgH = size==='full' ? '360px' : size==='half' ? '220px' : '150px';
+  return `<article class="pub-article">
+    ${a.category ? `<p class="cat-label">${CAT_LABELS[a.category] || a.category}</p>` : ''}
+    <h2 style="font-size:${hSize}">${esc(a.headline)}</h2>
+    ${a.subtitle ? `<p class="art-sub">${esc(a.subtitle)}</p>` : ''}
+    ${a.author ? `<p class="art-auth">Von ${esc(a.author)}</p>` : ''}
+    ${a.image_url ? `<img class="art-img" src="${a.image_url}" style="height:${imgH}" alt="" />` : ''}
+    ${a.image_caption ? `<p class="art-caption">${esc(a.image_caption)}</p>` : ''}
+    ${a.content ? `<div class="art-content">${a.content}</div>` : ''}
+  </article>`;
+}
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function esc(str) {
+  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtDate(d) {
+  if (!d) return '';
+  try { return new Date(d).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'}); } catch(e) { return d; }
+}
+function fmtDateLong(d) {
+  if (!d) return '';
+  try { return new Date(d).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'}); } catch(e) { return d; }
+}
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+// Check for public view URL param
+const urlParams = new URLSearchParams(location.search);
+const viewId = urlParams.get('view');
+if (viewId) {
+  openPublicView(viewId);
+} else {
+  renderDashboard();
+  showPage('dashboard');
+}
 </script>
 </body>
 </html>
