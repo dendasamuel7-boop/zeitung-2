@@ -241,14 +241,77 @@ input,textarea,select{font-family:var(--font-body);color:var(--fg)}
 svg.icon{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 svg.icon-sm{width:14px;height:14px}
 svg.icon-lg{width:20px;height:20px}
+ svg.icon-lg{width:20px;height:20px}
+
+/* ─── SYSTEM SECTIONS FOR AUTH ─── */
+.auth-container { max-width: 400px; margin: 80px auto; padding: 32px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.auth-container h2 { font-size: 26px; margin-bottom: 8px; text-align: center; }
+.auth-container p { color: var(--muted); font-size: 14px; text-align: center; margin-bottom: 24px; }
+.auth-container .field { margin-bottom: 16px; }
+.auth-container .field label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.auth-container .field input { width: 100%; padding: 10px 12px; border: 1px solid var(--border2); border-radius: var(--radius); outline: none; font-size: 14px; background: #fff; }
+.auth-container .field input:focus { border-color: var(--fg); }
+.auth-footer-links { display: flex; justify-content: space-between; margin-top: 16px; font-size: 13px; }
+.auth-footer-links a { color: var(--accent); text-decoration: none; cursor: pointer; }
+.auth-footer-links a:hover { text-decoration: underline; }
+
+</style>
 </style>
 </head>
 <body>
+<div id="auth-login" class="auth-container fade-in">
+  <h2>Anmelden bei Zeitung</h2>
+  <p>Geben Sie Ihre Daten ein, um fortzufahren</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="login-email" placeholder="name@beispiel.de">
+  </div>
+  <div class="field">
+    <label>Passwort</label>
+    <input type="password" id="login-pass" placeholder="••••••••">
+  </div>
+  <button class="btn btn-primary" id="submit-login" style="width:100%; justify-content:center; margin-top:8px;">Einloggen</button>
+  <div class="auth-footer-links">
+    <a id="go-to-forgot">Passwort vergessen?</a>
+    <a id="go-to-register">Registrieren</a>
+  </div>
+</div>
 
+<div id="auth-register" class="auth-container fade-in hidden">
+  <h2>Konto erstellen</h2>
+  <p>Erstellen Sie ein Konto für Zeitung</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="reg-email" placeholder="name@beispiel.de">
+  </div>
+  <div class="field">
+    <label>Passwort erstellen</label>
+    <input type="password" id="reg-pass" placeholder="••••••••">
+  </div>
+  <button class="btn btn-primary" id="submit-register" style="width:100%; justify-content:center; margin-top:8px;">Konto erstellen</button>
+  <div class="auth-footer-links">
+    <span></span>
+    <a id="back-to-login-reg">Zurück zum Login</a>
+  </div>
+</div>
+
+<div id="auth-forgot" class="auth-container fade-in hidden">
+  <h2>Passwort vergessen</h2>
+  <p>Wir senden Ihnen Anweisungen zum Zurücksetzen</p>
+  <div class="field">
+    <label>E-Mail-Adresse</label>
+    <input type="email" id="forgot-email" placeholder="name@beispiel.de">
+  </div>
+  <button class="btn btn-primary" id="submit-forgot" style="width:100%; justify-content:center; margin-top:8px;">Zurücksetzen</button>
+  <div class="auth-footer-links">
+    <span></span>
+    <a id="back-to-login-forgot">Zurück zum Login</a>
+  </div>
+</div>
 <div id="toast-container"></div>
 
 <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
-<header id="nav">
+<header id="nav" class="hidden">
   <div class="nav-inner">
     <div class="logo" id="logo-btn" style="cursor:pointer">
       <div class="logo-icon">
@@ -1035,6 +1098,78 @@ if (viewId) {
 } else {
   renderDashboard();
   showPage('dashboard');
+}
+  // ─── CONTROLADOR DE SESIONES Y VISTAS DE ACCESO ───
+const viewLogin = document.getElementById('auth-login');
+const viewRegister = document.getElementById('auth-register');
+const viewForgot = document.getElementById('auth-forgot');
+const mainNav = document.getElementById('nav');
+const pageDashboard = document.getElementById('page-dashboard');
+
+// Cambiar entre pestañas
+document.getElementById('go-to-register').addEventListener('click', () => {
+  viewLogin.classList.add('hidden');
+  viewRegister.classList.remove('hidden');
+});
+document.getElementById('go-to-forgot').addEventListener('click', () => {
+  viewLogin.classList.add('hidden');
+  viewForgot.classList.remove('hidden');
+});
+document.getElementById('back-to-login-reg').addEventListener('click', () => {
+  viewRegister.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
+document.getElementById('back-to-login-forgot').addEventListener('click', () => {
+  viewForgot.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
+
+// Guardar usuario en LocalStorage
+document.getElementById('submit-register').addEventListener('click', () => {
+  const email = document.getElementById('reg-email').value;
+  const pass = document.getElementById('reg-pass').value;
+  if(!email || !pass) {
+    alert('Bitte alle Felder ausfüllen.');
+    return;
+  }
+  localStorage.setItem(`user_${email}`, pass);
+  alert('Konto erstellt! Bitte einloggen.');
+  viewRegister.classList.add('hidden');
+  viewLogin.classList.remove('hidden');
+});
+
+// Login y acceso al Dashboard original
+document.getElementById('submit-login').addEventListener('click', () => {
+  const email = document.getElementById('login-email').value;
+  const pass = document.getElementById('login-pass').value;
+  const storedPass = localStorage.getItem(`user_${email}`);
+
+  if (storedPass && storedPass === pass) {
+    viewLogin.classList.add('hidden');
+    mainNav.classList.remove('hidden');
+    pageDashboard.classList.remove('hidden');
+    // Forzar la inicialización del dashboard si tu script original tiene una función de inicio (ej: init() o render())
+    if(typeof renderNewspapers === 'function') renderNewspapers(); 
+  } else {
+    alert('Ungültige Daten.');
+  }
+});
+
+// Conexión con tu botón de Abmelden existente
+const logoutBtn = document.getElementById('btn-logout');
+if(logoutBtn){
+  logoutBtn.addEventListener('click', () => {
+    mainNav.classList.add('hidden');
+    pageDashboard.classList.add('hidden');
+    
+    // Asegurar que ocultamos también las otras páginas de tu editor si estaban abiertas
+    const edPage = document.getElementById('page-editor');
+    if(edPage) edPage.classList.add('hidden');
+    const artPage = document.getElementById('page-article-editor');
+    if(artPage) artPage.classList.add('hidden');
+    
+    viewLogin.classList.remove('hidden');
+  });
 }
 </script>
 </body>
